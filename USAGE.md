@@ -64,6 +64,7 @@ Fixed sections, in this order:
 ## Models
 ## Agentic AI & Agent Skills
 ## MCP & Plug-in
+## Tools & Open Source
 ## Community
 ```
 

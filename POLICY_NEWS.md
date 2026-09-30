@@ -67,7 +67,8 @@ group, because a primary source outranks anyone's account of it.
 
 **Primary — the artefact**
 
-- GitHub: releases of significant projects, and GitHub Trending.
+- GitHub: releases of significant projects, and GitHub Trending. Open-source
+  tooling is news in its own right, not only when a large company ships it.
 - Hugging Face: new and updated model, dataset and Space releases, and the
   papers page.
 - arXiv abstracts, when a paper is the news rather than the coverage of it.

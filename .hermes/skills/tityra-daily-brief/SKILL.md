@@ -60,6 +60,7 @@ query is not coverage.
 | **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Cohere, NVIDIA, …) |
 | **Agentic AI & Agent Skills** | agent frameworks and products, Agent Skills, notable adoption |
 | **MCP & Plug-in** | Model Context Protocol releases, spec changes, SDKs, significant integrations |
+| **Tools & Open Source** | AI services and products, notable open-source releases, and developer tools worth knowing about — the practical layer between a model and the work |
 | **Community** | what developers are actually discussing and shipping |
 
 `POLICY_NEWS.md` has the full **"Where to look"** list. Work it in this order,
@@ -109,7 +110,8 @@ existing file is not that day's brief, stop and report it rather than clearing
 the way.
 
 Fill in the skeleton, keeping its sections and order: `TOP 3`, `Models`,
-`Agentic AI & Agent Skills`, `MCP & Plug-in`, `Community`.
+`Agentic AI & Agent Skills`, `MCP & Plug-in`, `Tools & Open Source`,
+`Community`.
 
 Rules, all of which restate `POLICY_NEWS.md`:
 

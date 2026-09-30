@@ -42,6 +42,16 @@ The genus name comes from *Tityri*, the Ancient Greek word for satyrs — the
 companions of Pan — after the bird's boisterous behaviour. Its call is described
 in the literature as an "unmusical nasal grunting". Make of that what you will.
 
+## Visits
+
+The footer shows how many times the site has been read today and in total,
+counted by [GoatCounter](https://www.goatcounter.com/). It sets **no cookies**,
+collects **no personal data**, and does **no cross-site tracking**; the numbers
+are public, which is why they can be printed here at all.
+
+If your browser blocks it, the counter simply does not appear. Nothing else on
+the page depends on it.
+
 ## Colophon
 
 Set in **Newsreader**, **Hanken Grotesk** and **DM Mono**. One ink on gridded

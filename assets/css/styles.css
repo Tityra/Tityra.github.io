@@ -651,3 +651,10 @@ a.figures__value {
 a.figures__value:hover {
   border-bottom-color: var(--ink);
 }
+
+/* Visit counts, read back from GoatCounter. Hidden until they actually load:
+   a footer that says "0 today" because a request was blocked is worse than a
+   footer that says nothing. */
+.tally {
+  font-variant-numeric: tabular-nums;
+}

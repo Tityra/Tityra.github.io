@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..500&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500&family=Noto+Serif+KR:wght@500&family=Noto+Sans+KR:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=5" />
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=6" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/tityra-32.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="48x48" href="{{ '/assets/img/tityra-48.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/img/tityra-96.png' | relative_url }}" />
@@ -58,6 +58,10 @@
       <footer class="foot">
         <span>{{ site.title }} · {{ site.tagline }}</span>
         <span>
+          <span class="tally" id="tally" hidden>
+            <span id="tally-today">–</span> today ·
+            <span id="tally-total">–</span> total ·
+          </span>
           <a href="{{ '/feed.xml' | relative_url }}">Feed</a> ·
           <a href="https://github.com/Tityra">GitHub</a>
         </span>
@@ -99,6 +103,40 @@
           el.style.animationDelay = (i % 6) * 0.015 + "s";
           seen.observe(el);
         });
+      })();
+    </script>
+    <!-- GoatCounter: no cookies, no personal data, no cross-site tracking. -->
+    <script
+      data-goatcounter="https://tityra.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+    <script>
+      // Read the public counters back and show them in the footer. Everything
+      // here fails silently: a blocked request, an offline reader or a counter
+      // that is not public yet leaves the footer exactly as it was, rather than
+      // showing a zero that would be a lie.
+      (function () {
+        var base = "https://tityra.goatcounter.com/counter/TOTAL.json";
+        var seoulToday = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Asia/Seoul",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).format(new Date());
+        var show = function (id, value) {
+          document.getElementById(id).textContent = value;
+        };
+        Promise.all([
+          fetch(base).then(function (r) { return r.json(); }),
+          fetch(base + "?start=" + seoulToday).then(function (r) { return r.json(); }),
+        ])
+          .then(function (both) {
+            show("tally-total", both[0].count);
+            show("tally-today", both[1].count);
+            document.getElementById("tally").hidden = false;
+          })
+          .catch(function () {});
       })();
     </script>
   </body>

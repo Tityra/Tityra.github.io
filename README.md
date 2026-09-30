@@ -16,6 +16,13 @@ a correct one.
 source; say only what the source says; no invented numbers; mark the difference
 between fact, interpretation and speculation; correct in place and date it.
 
+## Visits
+
+Counted by [GoatCounter](https://www.goatcounter.com/) — no cookies, no personal
+data, no cross-site tracking. The public counter endpoint is read back in the
+footer to show today's and total reads. Every part of it fails silently: a
+blocked request leaves the footer unchanged rather than printing a zero.
+
 ## Stack
 
 - GitHub Pages + Jekyll (no build step to maintain; GitHub builds it)

@@ -34,7 +34,21 @@ _layouts/             default + post
 assets/css/styles.css The design system
 POLICY_NEWS.md        Standing editorial policy
 USAGE.md              How to write and publish a brief
+scripts/new-brief.sh  Creates a dated skeleton; refuses duplicates
+.hermes/skills/       Agent skill for the daily brief
 ```
+
+## The daily brief
+
+The recurring post is produced by the Hermes agent skill in
+[`.hermes/skills/tityra-daily-brief/`](.hermes/skills/tityra-daily-brief/SKILL.md).
+The cron job's only instruction is to run that skill — the research brief, the
+editorial rules and the output shape live in the repository, versioned, so they
+can be changed without touching the scheduler.
+
+The skill reads [`POLICY_NEWS.md`](POLICY_NEWS.md) as its source of truth, writes
+through `scripts/new-brief.sh` (which refuses a second post for the same date),
+and **stops before publishing** unless publishing is explicitly requested.
 
 ## Local preview
 

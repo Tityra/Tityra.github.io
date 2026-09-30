@@ -47,8 +47,33 @@ editorial rules and the output shape live in the repository, versioned, so they
 can be changed without touching the scheduler.
 
 The skill reads [`POLICY_NEWS.md`](POLICY_NEWS.md) as its source of truth, writes
-through `scripts/new-brief.sh` (which refuses a second post for the same date),
+through `scripts/new-brief.sh` (which refuses a second brief for the same date),
 and **stops before publishing** unless publishing is explicitly requested.
+
+### Setting this up on a new machine
+
+The skill lives in this repository, so it travels with the checkout. Hermes
+loads repo-local skills only from projects you have trusted, and that trust is
+recorded per machine in `~/.hermes/config.yaml` under `trusted_project_dirs`.
+So one command after cloning:
+
+```bash
+hermes skills trust /path/to/Tityra
+```
+
+Then recreate the schedule:
+
+```bash
+hermes cron create "0 6 * * *" \
+  "Produce today's Tityra daily brief using the tityra-daily-brief skill. \
+   Follow it exactly. Do NOT commit or push; leave the file for review." \
+  --name "Tityra Daily Brief" --skill tityra-daily-brief \
+  --workdir /path/to/Tityra --deliver discord:<channel> \
+  --model gpt-6-sol --provider openai-codex
+```
+
+There is deliberately no second copy of the skill under `~/.hermes/skills/`.
+Two copies drift, and the one in version control is the one that should win.
 
 ## Local preview
 

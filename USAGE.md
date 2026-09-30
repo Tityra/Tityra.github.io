@@ -58,7 +58,8 @@ Fixed sections, in this order:
 - Everything in bullet form. One to two lines per item; itemise sub-points.
 - **Keep technical terms in the original** — Agentic AI, MCP, tool use, context
   window, fine-tuning. Do not translate or paraphrase them.
-- A section with nothing new says **`신규 없음`** and stops. Do not pad it.
+- A section with nothing new says the site's `brief.empty_section` phrase
+  (set in `_config.yml`) and stops. Do not pad it.
 - No opinion, speculation or forecasting in a daily brief. Only what the primary
   source states.
 

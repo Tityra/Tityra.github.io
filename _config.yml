@@ -16,6 +16,14 @@ kramdown:
   syntax_highlighter: rouge
   hard_wrap: false
 
+# Language of the posts themselves, and the exact phrases a brief must use.
+# Guidelines are always written in English (scripts/check-english.sh enforces
+# it); these are content values, referred to by name from those guidelines.
+brief:
+  post_language: Korean
+  empty_section: "신규 없음"
+  no_news_report: "금일 신규 건 없음"
+
 defaults:
   - scope: { path: "", type: "posts" }
     values: { layout: "post" }

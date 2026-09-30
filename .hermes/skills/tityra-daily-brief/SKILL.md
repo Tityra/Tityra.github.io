@@ -95,7 +95,8 @@ Rules, all of which restate `POLICY_NEWS.md`:
   numbers", not "the model achieves".
 - **No opinion, speculation or forecasting.** State what the primary source
   states. This is stricter than an ordinary news post and it is deliberate.
-- **A section with nothing new says `신규 없음` and stops.** Do not pad it.
+- **A section with nothing new says the `brief.empty_section` phrase from
+  `_config.yml` and stops.** Do not pad it.
 - `title` is the day's lead headline as a sentence — never "Daily Brief #47".
   A reader scanning the archive should see what happened.
 - `summary` is one line, for the index and the feed.
@@ -113,9 +114,10 @@ Reply with the three headlines only, one line each, plus the path to the file.
 No commentary.
 
 **If nothing happened in any area during the window: create no file.** Report
-"금일 신규 건 없음" and the sources you checked. A day with no post is a correct
-outcome; a post that exists to keep a streak is the first step toward inventing
-significance, which is the same failure as inventing facts.
+the `brief.no_news_report` phrase from `_config.yml`, and the sources you
+checked. A day with no post is a correct outcome; a post that exists to keep a
+streak is the first step toward inventing significance, which is the same
+failure as inventing facts.
 
 ## Publishing
 

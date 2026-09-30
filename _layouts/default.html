@@ -14,7 +14,9 @@
     <meta property="og:description" content="{{ page.summary | default: site.description | strip_newlines | truncate: 180 }}" />
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:image" content="{{ '/assets/img/tityra-512.png' | absolute_url }}" />
     <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="{{ '/assets/img/tityra-512.png' | absolute_url }}" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,25 +25,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=1" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23f0ebde'/%3E%3Cg fill='%231f2be0'%3E%3Ccircle cx='21' cy='18' r='9'/%3E%3Cpath d='M12 14 L2 21 L12 26 Z'/%3E%3Crect x='15' y='24' width='19' height='16' rx='8'/%3E%3Cpath d='M31 33 L46 45 L33 41 Z'/%3E%3C/g%3E%3Ccircle cx='19' cy='15' r='2' fill='%23f0ebde'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/tityra-32.png' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ '/assets/img/tityra-48.png' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/img/tityra-96.png' | relative_url }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/tityra-180.png' | relative_url }}" />
   </head>
   <body>
     <div class="wrap">
       <header class="masthead">
         <a class="masthead__mark" href="{{ '/' | relative_url }}">
-          <!-- A tityra: stout body, oversized bill, black wings and tail, pale eye-ring. -->
-          <svg viewBox="0 0 48 48" role="img" aria-label="Tityra">
-            <g fill="currentColor">
-              <circle cx="21" cy="18" r="9" />
-              <path d="M12 14 L2 21 L12 26 Z" />
-              <rect x="15" y="24" width="19" height="16" rx="8" />
-              <path d="M31 33 L46 45 L33 41 Z" />
-            </g>
-            <circle cx="19" cy="15" r="2" fill="var(--paper)" />
-          </svg>
+          <img src="{{ '/assets/img/tityra-96.png' | relative_url }}" alt="" width="34" height="34" />
           <span class="masthead__name">{{ site.title }}</span>
         </a>
         <nav class="masthead__nav">

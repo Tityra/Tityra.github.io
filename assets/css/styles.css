@@ -64,10 +64,11 @@ body {
   color: inherit;
 }
 
-.masthead__mark svg {
+.masthead__mark img {
   width: 34px;
   height: 34px;
   flex: none;
+  object-fit: contain;
 }
 
 .masthead__name {

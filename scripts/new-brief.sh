@@ -26,6 +26,11 @@ fi
 FILE="_posts/${DATE}-ai-daily-brief.md"
 STAMP="${DATE} 09:00:00 +0900"
 
+# The "nothing new" phrase is content, and lives in _config.yml so the English
+# guidelines can name it rather than embed it.
+EMPTY=$(sed -n 's/^  empty_section: *"\(.*\)"$/\1/p' _config.yml | head -1)
+EMPTY="${EMPTY:-Nothing new}"
+
 cat > "$FILE" <<TEMPLATE
 ---
 title: TODO — the day's lead headline, as a sentence
@@ -43,19 +48,19 @@ sources: []
 
 ## Models
 
-신규 없음
+${EMPTY}
 
 ## Agentic AI & Agent Skills
 
-신규 없음
+${EMPTY}
 
 ## MCP & Plug-in
 
-신규 없음
+${EMPTY}
 
 ## Community
 
-신규 없음
+${EMPTY}
 TEMPLATE
 
 echo "$FILE"
@@ -63,5 +68,5 @@ echo
 echo "Fill it in, then check before committing:" >&2
 echo "  - every factual claim traces to an entry in 'sources'" >&2
 echo "  - every number in the text appears in a linked source" >&2
-echo "  - sections with nothing new say '신규 없음' and stop there" >&2
+echo "  - sections with nothing new say '${EMPTY}' and stop there" >&2
 echo "  - if nothing happened anywhere today, delete this file and publish nothing" >&2

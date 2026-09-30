@@ -57,15 +57,39 @@ query is not coverage.
 
 | area | what counts |
 | --- | --- |
-| **Models** | new model releases, version updates, benchmarks, pricing and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, …) |
+| **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Cohere, NVIDIA, …) |
 | **Agentic AI & Agent Skills** | agent frameworks and products, Agent Skills, notable adoption |
-| **MCP & Plug-in** | Model Context Protocol releases, spec changes, significant integrations |
-| **Community** | what is actually being discussed on r/LocalLLaMA, r/MachineLearning, r/ClaudeAI, r/OpenAI, X, Hacker News, GitHub Trending |
+| **MCP & Plug-in** | Model Context Protocol releases, spec changes, SDKs, significant integrations |
+| **Community** | what developers are actually discussing and shipping |
 
-**Prefer the primary source**: the official blog post, the release notes, the
-GitHub release, the paper abstract, the original post. If you only find
-secondary coverage, go and find the primary source and link that. Link coverage
-only when it adds something the primary source does not have.
+`POLICY_NEWS.md` has the full **"Where to look"** list. Work it in this order,
+because a primary source outranks anyone's account of it:
+
+1. **The announcement** — company engineering and research blogs (OpenAI,
+   Anthropic, Google DeepMind and Google AI, Meta AI, Microsoft and Azure AI,
+   AWS, NVIDIA, Mistral, xAI, Qwen, DeepSeek, Cohere, Hugging Face, Cloudflare,
+   Perplexity, Together, Groq, Stability), release notes and changelogs, the MCP
+   specification and SDK repositories, and official filings or statements.
+2. **The artefact** — GitHub releases and GitHub Trending; Hugging Face model,
+   dataset, Space and paper pages; arXiv abstracts when the paper is the news.
+3. **Where it surfaces** — Hacker News and its threads, Reddit (r/LocalLLaMA,
+   r/MachineLearning, r/ClaudeAI, r/OpenAI, r/StableDiffusion), X, technical
+   newsletters, and trade press when it has reporting the primary source lacks.
+
+If you only find secondary coverage, go and find the primary source and link
+that. Link coverage only when it adds something the primary source does not
+have.
+
+Community discussion is a legitimate item — what developers are arguing about is
+news — but **label it as discussion**. A popular thread is evidence of interest,
+never evidence that its claims are true.
+
+None of this is a quota. Breadth is worth nothing if it turns into padding: an
+empty section is a correct answer, and a fabricated one is not.
+
+**If web search starts failing repeatedly, stop and say so** rather than
+producing a thin brief that looks like a quiet news day. A brief that silently
+under-reports is worse than one that admits its coverage was broken.
 
 If an area has nothing new in the window, it has nothing new. Record that.
 

@@ -47,6 +47,46 @@ Every rule below is written against that.
      the foot saying what changed and why. The original claim is not silently
      deleted.
 
+## Where to look
+
+Coverage is judged on whether the brief found what happened, not on how many
+searches were run. These are the places it happens; work outward from the first
+group, because a primary source outranks anyone's account of it.
+
+**Primary — the announcement itself**
+
+- Company engineering and research blogs: OpenAI, Anthropic, Google DeepMind and
+  Google AI, Meta AI, Microsoft and Azure AI, AWS, NVIDIA, Mistral, xAI,
+  Alibaba Qwen, DeepSeek, Cohere, Hugging Face, Cloudflare, Perplexity,
+  Together, Groq, Stability.
+- Release notes and changelogs, including model and API deprecations.
+- Standards and protocol repositories, including the Model Context Protocol
+  specification and SDKs.
+- Regulatory filings, court documents and official statements where a story
+  turns on one.
+
+**Primary — the artefact**
+
+- GitHub: releases of significant projects, and GitHub Trending.
+- Hugging Face: new and updated model, dataset and Space releases, and the
+  papers page.
+- arXiv abstracts, when a paper is the news rather than the coverage of it.
+
+**Secondary — where things surface and get discussed**
+
+- Hacker News, and its comment threads when the discussion is itself the story.
+- Reddit: r/LocalLLaMA, r/MachineLearning, r/ClaudeAI, r/OpenAI,
+  r/StableDiffusion.
+- X, and technical newsletters.
+- Trade press, when it has reporting the primary source does not.
+
+Community discussion is a legitimate item — *what developers are arguing about*
+is news — but label it as discussion. A popular thread is evidence of interest,
+never evidence that its claims are true.
+
+Nothing in this list is a quota. If a group has nothing new in the window, it
+has nothing new.
+
 ## Brief structure
 
 Front matter:

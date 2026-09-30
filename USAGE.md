@@ -33,17 +33,24 @@ sources:
 ---
 ```
 
-Optionally, `figures` renders two or three quoted numbers large above the body:
+`figures` renders up to three quoted numbers large above the body. It is a
+standard part of a brief:
 
 ```yaml
 figures:
   - value: "1,700%"
     label: Growth in agent requests on Cloudflare's network, year on year
+    url: https://blog.cloudflare.com/agentic-web/
 ```
 
-Figures are **quoted from a linked source**, never inferred and never scraped
-from the prose by a script — a number lifted out of a sentence can be
-misattributed, and this site's contract is that figures are quoted.
+**Every figure is a number a linked source states** — never computed, never
+rounded into a better shape, never lifted out of a sentence away from the
+attribution that qualifies it. The `label` names whose number it is; the `url`
+makes the largest type on the page the most checkable.
+
+Two quotable numbers means two figures. None means none — **an empty strip is
+correct, and a manufactured number to fill it is the failure the whole policy
+exists to prevent.**
 
 `sources` renders as a numbered list at the foot of the post. Every factual
 claim in the body must trace to one of them — that is the whole contract, and

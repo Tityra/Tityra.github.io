@@ -105,6 +105,22 @@ sources:
 ---
 ```
 
+`figures` carries up to three of the day's most significant numbers, set large
+above the body. It is a standard part of a brief, not decoration, and it obeys
+one rule that matters more than the rhythm it creates:
+
+**Every figure is a number a linked source states.** Never computed, never
+rounded into a better shape, never lifted out of a sentence away from the
+attribution that qualifies it. If the day's news yields only two quotable
+numbers, show two. If it yields none — a day of releases with no figures
+attached is an ordinary day — show none. **An empty strip is correct; a
+manufactured number to fill it is the exact failure this policy exists to
+prevent.**
+
+Each figure carries a `label` naming whose number it is ("in Cloudflare's own
+internal usage", not "cost saving"), and a `url` pointing at the source that
+states it, so the largest type on the page is also the most checkable.
+
 Body, in this order:
 
 1. `## The short version` — three to five bullets, one per story, each a

@@ -20,7 +20,11 @@ layout: default
   <section class="figures band">
     {% for f in page.figures %}
     <div class="figures__item">
+      {% if f.url %}
+      <a class="figures__value" href="{{ f.url }}" rel="noopener">{{ f.value }}</a>
+      {% else %}
       <span class="figures__value">{{ f.value }}</span>
+      {% endif %}
       <span class="figures__label">{{ f.label }}</span>
     </div>
     {% endfor %}

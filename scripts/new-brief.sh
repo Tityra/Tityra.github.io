@@ -40,6 +40,13 @@ title: TODO — the day's lead headline, as a sentence
 date: ${STAMP}
 kind: Daily brief
 summary: TODO — one line for the index and the feed.
+# Up to three of the day's most significant numbers, each one a figure a linked
+# source states. Fewer is fine. None is fine. Inventing one to fill the strip is
+# not — delete the key rather than manufacture a number.
+figures:
+  - value: TODO
+    label: TODO — whose number is this
+    url: https://
 sources: []
 ---
 

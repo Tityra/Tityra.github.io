@@ -131,10 +131,20 @@ Rules, all of which restate `POLICY_NEWS.md`:
 - `title` is the day's lead headline as a sentence — never "Daily Brief #47".
   A reader scanning the archive should see what happened.
 - `summary` is one line, for the index and the feed.
-- `figures` is optional: two or three of the day's most significant numbers,
-  each `value` plus a short `label` naming whose number it is. Quote them from
-  a linked source. Never a number you calculated, and never one lifted out of
-  the prose without its attribution.
+- `figures` is **standard, not optional**: up to three of the day's most
+  significant numbers, set large above the body. Each has a `value`, a `label`
+  naming whose number it is ("in Cloudflare's own internal usage", not "cost
+  saving"), and a `url` pointing at the source that states it.
+
+  **Every figure must be a number a linked source states.** Never computed,
+  never rounded into a better shape, never lifted away from the attribution
+  that qualifies it. Pick them from the day's most significant items, not the
+  largest digits available.
+
+  If the day yields only two quotable numbers, give two. If it yields none — a
+  day of releases with no figures attached is an ordinary day — give none and
+  omit the key. An empty strip is correct; **a manufactured number to fill it is
+  the exact failure this skill exists to prevent.**
 
 ### 4. Check before handing over
 

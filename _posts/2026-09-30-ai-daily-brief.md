@@ -3,6 +3,16 @@ title: Cohere released Embed 5 as Cloudflare expanded its agent tools
 date: 2026-09-30 23:34:00 +0900
 kind: Daily brief
 summary: Embed 5, Cloudflare's new agent infrastructure, OpenClaw's update, and fresh open-source and MCP work.
+figures:
+  - value: "$0.12"
+    label: Embed 5 Pro, per million tokens, on Cohere's own price list
+    url: https://cohere.com/blog/embed-5
+  - value: "up to 30%"
+    label: Auto Router saving in Cloudflare's own early OpenCode use
+    url: https://blog.cloudflare.com/auto-router/
+  - value: "15.2 pts"
+    label: Change in mean task reward from swapping only the user proxy, across 375 tasks (UserProxyBench authors)
+    url: https://arxiv.org/abs/2609.38043v1
 sources:
   - title: Introducing Embed 5—A New Family of Frontier Embedding Models
     url: https://cohere.com/blog/embed-5

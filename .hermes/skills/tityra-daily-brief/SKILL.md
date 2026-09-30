@@ -105,6 +105,10 @@ Rules, all of which restate `POLICY_NEWS.md`:
 - `title` is the day's lead headline as a sentence — never "Daily Brief #47".
   A reader scanning the archive should see what happened.
 - `summary` is one line, for the index and the feed.
+- `figures` is optional: two or three of the day's most significant numbers,
+  each `value` plus a short `label` naming whose number it is. Quote them from
+  a linked source. Never a number you calculated, and never one lifted out of
+  the prose without its attribution.
 
 ### 4. Check before handing over
 

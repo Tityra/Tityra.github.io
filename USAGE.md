@@ -33,6 +33,18 @@ sources:
 ---
 ```
 
+Optionally, `figures` renders two or three quoted numbers large above the body:
+
+```yaml
+figures:
+  - value: "1,700%"
+    label: Growth in agent requests on Cloudflare's network, year on year
+```
+
+Figures are **quoted from a linked source**, never inferred and never scraped
+from the prose by a script — a number lifted out of a sentence can be
+misattributed, and this site's contract is that figures are quoted.
+
 `sources` renders as a numbered list at the foot of the post. Every factual
 claim in the body must trace to one of them — that is the whole contract, and
 [`POLICY_NEWS.md`](POLICY_NEWS.md) is the long form of it.

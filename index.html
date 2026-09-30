@@ -9,7 +9,7 @@ layout: default
 {% if site.posts.size > 0 %}
 {% assign latest = site.posts.first %}
 <div class="dateline">
-  <span>Latest</span>
+  <span>Latest <span class="pulse" aria-hidden="true"></span></span>
   <span>{{ latest.date | date: "%Y.%m.%d" }}</span>
   {% if latest.kind %}<span>{{ latest.kind }}</span>{% endif %}
 </div>

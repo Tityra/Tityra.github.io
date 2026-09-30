@@ -3,6 +3,13 @@ title: Cohere released Embed 5 as Cloudflare opened Auto Router beta
 date: 2026-09-30 22:45:00 +0900
 kind: Daily brief
 summary: Cohere released new embedding models, Cloudflare opened AI Gateway Auto Router beta, and Pi's MCP support drew discussion.
+figures:
+  - value: "$0.12"
+    label: Embed 5 Pro, per million tokens (Cohere)
+  - value: "1,700%"
+    label: Growth in daily AI agent requests on Cloudflare's network, year on year
+  - value: "up to 30%"
+    label: Auto Router saving in Cloudflare's own internal usage
 sources:
   - title: Introducing Embed 5—A New Family of Frontier Embedding Models
     url: https://cohere.com/blog/embed-5

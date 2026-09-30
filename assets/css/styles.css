@@ -511,3 +511,123 @@ body {
     opacity: 1;
   }
 }
+
+/* ===================================================== depth without colour
+   The site stays one ink. Warmth and activity come from paper tone, motion,
+   typographic scale and the bird — not from a second hue. */
+
+/* --- 1 · the heartbeat ---------------------------------------------------
+   A wire service is a thing that is alive and delivers every morning. */
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+  margin-left: 2px;
+  vertical-align: baseline;
+  animation: beat 3.2s var(--ease) infinite;
+}
+
+@keyframes beat {
+  0%, 62%, 100% { transform: scale(1); opacity: 0.85; }
+  8% { transform: scale(1.5); opacity: 1; }
+  16% { transform: scale(1); opacity: 0.85; }
+  24% { transform: scale(1.32); opacity: 1; }
+  32% { transform: scale(1); opacity: 0.85; }
+}
+
+/* --- 3 · the deck's progress line ---------------------------------------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--ink);
+  z-index: 50;
+  transition: width 0.1s linear;
+}
+
+/* --- 4 · figures as typographic objects ----------------------------------
+   Populated from front matter, never scraped from the prose: a number pulled
+   out of a sentence by a script is a number that can be misattributed, and
+   this site's whole contract is that figures are quoted, not inferred. */
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(22px, 5vw, 56px);
+  padding: 26px 0 30px;
+  border-bottom: var(--rule);
+}
+
+.figures__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.figures__value {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5.2vw, 54px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.figures__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+  max-width: 22ch;
+}
+
+/* --- 5 · paper strata ----------------------------------------------------
+   Two percent of warmth, invisible as colour and felt as depth. A slide is
+   flat because it is one screen; a page you scroll wants layers. */
+.band {
+  position: relative;
+}
+
+.band::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--gutter) * -1);
+  background: #ece6d6;
+  opacity: 0.55;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.brief:nth-child(even) {
+  background-color: rgba(214, 203, 178, 0.32);
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-left: -14px;
+  margin-right: -14px;
+}
+
+/* --- 6 · the tail as the rule --------------------------------------------
+   Cyanopica-style: the tityra's long tail drawn as the divider, so the brand
+   becomes the layout instead of sitting in a corner. */
+.tail {
+  display: block;
+  width: 100%;
+  height: 14px;
+  margin: 8px 0 0;
+  color: var(--ink);
+}
+
+.tail svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+  .progress { transition: none; }
+}

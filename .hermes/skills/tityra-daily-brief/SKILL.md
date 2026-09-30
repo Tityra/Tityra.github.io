@@ -128,6 +128,17 @@ Rules, all of which restate `POLICY_NEWS.md`:
   states. This is stricter than an ordinary news post and it is deliberate.
 - **A section with nothing new says the `brief.empty_section` phrase from
   `_config.yml` and stops.** Do not pad it.
+- **One story, one home.** Each item belongs to exactly one section. If a story
+  touches two, pick the one it is really about. Splitting one announcement
+  across two headings makes a quiet day look busy — padding in a tidier shape —
+  and `scripts/check-brief.sh` fails on it.
+- **`TOP 3` is an index.** One sentence per line naming what happened, pointing
+  at the item below. If a TOP 3 line and its section bullet say the same thing
+  at the same length, the bullet adds nothing.
+- **Discussion is not a second copy of the story.** Put the announcement in its
+  own section and the argument in `Community`, and make the Community item about
+  what people are *saying* — do not restate the announcement or re-link its
+  primary source.
 - `title` is the day's lead headline as a sentence — never "Daily Brief #47".
   A reader scanning the archive should see what happened.
 - `summary` is one line, for the index and the feed.

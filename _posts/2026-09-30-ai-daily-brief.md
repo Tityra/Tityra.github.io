@@ -82,4 +82,4 @@ sources:
 
 ## Community
 
-- **MCP debate:** In a [September 30 Hacker News thread](https://news.ycombinator.com/item?id=49906637) about [Pi's integration](https://earendil.com/posts/you-said-no-mcp/), participants discuss whether MCP tools, resources and prompts compose well across clients. These are developer views, not changes to the MCP specification.
+- **MCP debate:** A [September 30 Hacker News thread](https://news.ycombinator.com/item?id=49906637) on Pi's MCP support, covered above, argued over whether MCP tools, resources and prompts compose well across clients. These are developer views, not changes to the MCP specification.

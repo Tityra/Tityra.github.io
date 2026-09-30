@@ -133,6 +133,29 @@ Body, in this order:
 Do not pad to fill the structure. A quiet day is three bullets and no sections;
 that is a correct brief, not a failed one.
 
+## One story, one home
+
+A brief covers each story **once**.
+
+- Every item belongs to exactly one section — the one it is primarily about. If
+  a story touches two, choose the section it is really about and say the rest
+  there. Splitting one announcement across two sections makes a quiet day look
+  busy, which is padding wearing a tidier shape.
+- **`TOP 3` is an index, not a section.** It may point at items expanded below,
+  but each line is one sentence naming what happened. If a TOP 3 line and its
+  section bullet say the same thing at the same length, the section bullet has
+  nothing to add and the story is being told twice.
+- Several announcements from one company on one day are several items, and may
+  be grouped under one bullet with sub-points. That is not duplication. The same
+  announcement appearing under two headings is.
+- Discussion of a story is not a second copy of the story. Cover the
+  announcement in its own section and the discussion in `Community`, and let the
+  Community item be about **what people are saying** — do not restate the
+  announcement or re-link its primary source.
+
+`scripts/check-brief.sh` enforces this: it fails if one source anchors items in
+more than one body section.
+
 ## What does not go in
 
 - Rumours without a named reporter or outlet.

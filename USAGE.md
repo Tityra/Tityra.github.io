@@ -86,6 +86,11 @@ Fixed sections, in this order:
   window, fine-tuning. Do not translate or paraphrase them.
 - A section with nothing new says the site's `brief.empty_section` phrase
   (set in `_config.yml`) and stops. Do not pad it.
+
+**One story, one home.** Each item lives in exactly one section; `TOP 3` is an
+index that may point at it. Discussion of an announcement goes in `Community`
+and is about what people are saying, not a second telling of the news.
+`check-brief.sh` fails if one source anchors items in two body sections.
 - No opinion, speculation or forecasting in a daily brief. Only what the primary
   source states.
 

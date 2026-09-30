@@ -75,6 +75,28 @@ for url in sorted(set(figure_urls) | inline):
     if status != 200:
         problems.append(f"link does not resolve ({status}): {clean}")
 
+# --- no story told twice ------------------------------------------------------
+# TOP 3 is an index and may point at items expanded below. Any other section
+# carrying the same source means the same story is being told twice.
+sections = {}
+chunks = re.split(r"^## (.+)$", body, flags=re.M)
+for index in range(1, len(chunks), 2):
+    sections[chunks[index].strip()] = chunks[index + 1]
+
+homes = {}
+for name, content in sections.items():
+    if name.strip().upper().startswith("TOP"):
+        continue
+    for url in set(re.findall(r"\]\((https?://[^)\s]+)\)", content)):
+        homes.setdefault(url, []).append(name)
+
+for url, names in sorted(homes.items()):
+    if len(names) > 1:
+        problems.append(
+            f"the same source anchors items in {len(names)} sections "
+            f"({', '.join(names)}) — one story, one home: {url}"
+        )
+
 if problems:
     print(f"NOT FIT TO PUBLISH — {path}")
     for problem in problems:

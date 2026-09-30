@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline }}{% endif %}</title>
+    <meta name="description" content="{{ page.summary | default: site.description | strip_newlines | truncate: 180 }}" />
+    <meta name="theme-color" content="#1f2be0" />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <link rel="alternate" type="application/atom+xml" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title }}" />
+
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title }}" />
+    <meta property="og:description" content="{{ page.summary | default: site.description | strip_newlines | truncate: 180 }}" />
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..500&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500&family=Noto+Serif+KR:wght@500&family=Noto+Sans+KR:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=1" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23f0ebde'/%3E%3Cg fill='%231f2be0'%3E%3Ccircle cx='21' cy='18' r='9'/%3E%3Cpath d='M12 14 L2 21 L12 26 Z'/%3E%3Crect x='15' y='24' width='19' height='16' rx='8'/%3E%3Cpath d='M31 33 L46 45 L33 41 Z'/%3E%3C/g%3E%3Ccircle cx='19' cy='15' r='2' fill='%23f0ebde'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="masthead">
+        <a class="masthead__mark" href="{{ '/' | relative_url }}">
+          <!-- A tityra: stout body, oversized bill, black wings and tail, pale eye-ring. -->
+          <svg viewBox="0 0 48 48" role="img" aria-label="Tityra">
+            <g fill="currentColor">
+              <circle cx="21" cy="18" r="9" />
+              <path d="M12 14 L2 21 L12 26 Z" />
+              <rect x="15" y="24" width="19" height="16" rx="8" />
+              <path d="M31 33 L46 45 L33 41 Z" />
+            </g>
+            <circle cx="19" cy="15" r="2" fill="var(--paper)" />
+          </svg>
+          <span class="masthead__name">{{ site.title }}</span>
+        </a>
+        <nav class="masthead__nav">
+          <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Briefs</a>
+          <a href="{{ '/archive/' | relative_url }}"{% if page.url contains '/archive' %} aria-current="page"{% endif %}>Archive</a>
+          <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>About</a>
+        </nav>
+      </header>
+
+      {{ content }}
+
+      <footer class="foot">
+        <span>{{ site.title }} · {{ site.tagline }}</span>
+        <span>
+          <a href="{{ '/feed.xml' | relative_url }}">Feed</a> ·
+          <a href="https://github.com/Tityra">GitHub</a>
+        </span>
+      </footer>
+    </div>
+  </body>
+</html>

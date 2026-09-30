@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="article">
+  <header class="article__header">
+    <div class="eyebrow">
+      {{ page.kind | default: "Brief" }} ·
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+    </div>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.sources and page.sources.size > 0 %}
+  <section class="sources">
+    <div class="eyebrow">Sources</div>
+    <ol>
+      {% for s in page.sources %}
+      <li><a href="{{ s.url }}" rel="noopener">{{ s.title }}</a>{% if s.outlet %} — {{ s.outlet }}{% endif %}</li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+</article>

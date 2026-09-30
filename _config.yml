@@ -1,0 +1,30 @@
+title: Tityra
+tagline: Tech news, perched in the open
+description: >-
+  A daily brief on technology news. Every claim carries its source.
+url: https://tityra.github.io
+baseurl: ""
+lang: en
+
+permalink: /:year/:month/:day/:title/
+timezone: Asia/Seoul
+
+# GitHub Pages builds this with its own Jekyll; no plugins beyond the allowlist.
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: "post" }
+
+exclude:
+  - README.md
+  - POLICY_NEWS.md
+  - USAGE.md
+  - scripts
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -410,3 +410,104 @@ body {
 .more a {
   color: inherit;
 }
+
+/* ---------------------------------------------------------------- motion */
+/* The deck's own motion language, carried over with the type and the ink:
+   --ease is its cubic-bezier, and it staggers entrances in 15ms steps. */
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --step: 0.015s;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lede h1,
+.lede p,
+.latest,
+.dateline,
+.article__header,
+.prose > *,
+.reveal {
+  animation: rise 0.55s var(--ease) both;
+}
+
+/* The stagger: each item enters one deck-step after the last. */
+.lede p { animation-delay: calc(var(--step) * 4); }
+.dateline { animation-delay: calc(var(--step) * 6); }
+.latest { animation-delay: calc(var(--step) * 8); }
+.brief:nth-child(1) { animation-delay: calc(var(--step) * 2); }
+.brief:nth-child(2) { animation-delay: calc(var(--step) * 4); }
+.brief:nth-child(3) { animation-delay: calc(var(--step) * 6); }
+.brief:nth-child(4) { animation-delay: calc(var(--step) * 8); }
+.brief:nth-child(5) { animation-delay: calc(var(--step) * 10); }
+.brief:nth-child(n + 6) { animation-delay: calc(var(--step) * 12); }
+
+/* Rows below the fold wait until they are scrolled to; the class is added by
+   the script in the layout, and only when motion is welcome. */
+.briefs .brief {
+  animation: rise 0.5s var(--ease) both;
+}
+
+.js-reveal .brief,
+.js-reveal .month {
+  opacity: 0;
+  animation: none;
+}
+
+.js-reveal .brief.is-in,
+.js-reveal .month.is-in {
+  animation: rise 0.5s var(--ease) both;
+}
+
+/* Interaction: the deck's ease on everything that responds to a pointer. */
+.masthead__nav a,
+.brief__title a,
+.latest__title a,
+.prose a,
+.more a,
+.sources a {
+  transition:
+    border-color 0.25s var(--ease),
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.masthead__mark img {
+  transition: transform 0.4s var(--ease);
+}
+
+.masthead__mark:hover img {
+  transform: translateY(-2px) rotate(-4deg);
+}
+
+.brief {
+  transition: background-color 0.3s var(--ease);
+}
+
+.brief:hover {
+  background-color: rgba(31, 43, 224, 0.04);
+}
+
+/* Motion is decoration. Readers who ask for less get none of it, and the page
+   must be complete and readable without a single frame having played. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js-reveal .brief,
+  .js-reveal .month {
+    opacity: 1;
+  }
+}

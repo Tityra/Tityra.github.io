@@ -8,16 +8,37 @@ permalink: /archive/
   <p>Every brief, newest first.</p>
 </section>
 
-<ul class="briefs">
-  {% for post in site.posts %}
-  <li class="brief">
-    <div class="brief__meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-    </div>
-    <div>
-      <h2 class="brief__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      {% if post.summary %}<p class="brief__summary">{{ post.summary }}</p>{% endif %}
-    </div>
-  </li>
-  {% endfor %}
-</ul>
+<div class="dateline">
+  <span>{{ site.posts.size }} brief{% if site.posts.size != 1 %}s{% endif %}</span>
+  {% if site.posts.size > 0 %}
+  <span>{{ site.posts.last.date | date: "%Y.%m.%d" }} — {{ site.posts.first.date | date: "%Y.%m.%d" }}</span>
+  {% endif %}
+</div>
+
+{% comment %}
+  Grouped by month: a daily series becomes unreadable as one flat list within
+  a few weeks, and the month headings give the year some shape.
+{% endcomment %}
+{% assign months = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" %}
+{% for month in months %}
+<section class="month">
+  <h2 class="month__title">
+    {{ month.items.first.date | date: "%B %Y" }}
+    <span class="month__count">{{ month.items.size }}</span>
+  </h2>
+  <ul class="briefs">
+    {% for post in month.items %}
+    <li class="brief">
+      <div class="brief__meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m.%d" }}</time>
+        {% if post.kind %}<br />{{ post.kind }}{% endif %}
+      </div>
+      <div>
+        <h3 class="brief__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        {% if post.summary %}<p class="brief__summary">{{ post.summary }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

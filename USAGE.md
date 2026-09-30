@@ -1,12 +1,28 @@
 # Writing a brief
 
-## 1. Create the file
+## The daily loop
 
-`_posts/YYYY-MM-DD-slug.md`, with front matter:
+```bash
+./scripts/new-brief.sh            # today (Asia/Seoul), or pass YYYY-MM-DD
+# fill the file in
+git add _posts/ && git commit -m "brief: <headline>" && git push
+```
+
+`new-brief.sh` **exits 3 if a brief already exists for that date**. A daily cron
+runs twice more often than you would think — a retry, a manual re-run, a job
+crossing midnight — and must never produce two posts for one day or overwrite
+the first.
+
+**If nothing happened anywhere today, delete the file and publish nothing.** An
+empty day with no post is correct. A post that exists to keep a streak is the
+first step toward inventing significance, which is the same failure as inventing
+facts in better clothes.
+
+## Front matter
 
 ```yaml
 ---
-title: A sentence that says what happened
+title: The day's lead headline, as a sentence
 date: 2026-09-30 09:00:00 +0900
 kind: Daily brief          # or: Weekly brief, Note
 summary: One line for the index and the feed.
@@ -18,23 +34,33 @@ sources:
 ```
 
 `sources` renders as a numbered list at the foot of the post. Every factual
-claim in the body must be traceable to one of them — that is the whole contract
-of the site, and [`POLICY_NEWS.md`](POLICY_NEWS.md) is the long form of it.
+claim in the body must trace to one of them — that is the whole contract, and
+[`POLICY_NEWS.md`](POLICY_NEWS.md) is the long form of it.
 
-## 2. Write the body
+**Title the brief with the day's lead headline, not "Daily Brief #47".** A
+reader scanning the archive should see what happened, and so should a search
+engine.
+
+## Body
+
+Fixed sections, in this order:
 
 ```markdown
-## The short version
-- One complete sentence per story, link inline.
+## TOP 3
+1. One line each, link inline.
 
-## <Story headline>
-What happened, what is new, what it does not yet tell us.
-
-## Worth watching
-Explicitly forward-looking. Optional.
+## Models
+## Agentic AI & Agent Skills
+## MCP & Plug-in
+## Community
 ```
 
-A quiet day is three bullets and no sections. Do not pad to fill the shape.
+- Everything in bullet form. One to two lines per item; itemise sub-points.
+- **Keep technical terms in the original** — Agentic AI, MCP, tool use, context
+  window, fine-tuning. Do not translate or paraphrase them.
+- A section with nothing new says **`신규 없음`** and stops. Do not pad it.
+- No opinion, speculation or forecasting in a daily brief. Only what the primary
+  source states.
 
 For an inverted emphasis block, matching the deck's solid nodes:
 
@@ -45,28 +71,25 @@ The claim worth stopping on.
 </div>
 ```
 
-## 3. Check before publishing
+## Before publishing
 
 - Every link resolves and points at what the text says it does.
 - Every number in the text appears in a linked source.
+- Vendor benchmark claims read as vendor claims — "on the company's own
+  numbers", not "the model achieves".
 - The headline is supported by the body, not by its most exciting bullet.
-- Vendor claims read as vendor claims.
-
-## 4. Publish
-
-```bash
-git add _posts/YYYY-MM-DD-slug.md
-git commit -m "brief: <headline>"
-git push
-```
-
-GitHub Pages rebuilds on push, usually within a minute.
 
 ## Corrections
 
-Do not delete a wrong claim. Strike it and append, at the foot of the post:
+Do not delete a wrong claim. Strike it and append at the foot of the post:
 
 ```markdown
 **Correction, 2026-10-02.** The original said X. The source says Y; the claim
 has been corrected above.
+```
+
+GitHub Pages rebuilds on push, usually within a minute. Check the build with:
+
+```bash
+gh api repos/Tityra/Tityra.github.io/pages/builds/latest --jq '{status,err:.error.message}'
 ```

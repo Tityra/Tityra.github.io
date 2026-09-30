@@ -340,3 +340,72 @@ body {
     --ink: #1f2be0;
   }
 }
+
+/* ------------------------------------------------- a daily series, at scale */
+/* The latest brief leads the home page; the rest are a compact list. */
+.latest {
+  padding: 22px 0 30px;
+  border-bottom: var(--rule);
+}
+
+.latest__title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  max-width: 22ch;
+}
+
+.latest__title a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.latest__title a:hover {
+  border-bottom-color: var(--ink);
+}
+
+.latest__summary {
+  margin: 0;
+  max-width: var(--measure);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.4;
+}
+
+/* Month headings keep a year of dailies navigable. */
+.month {
+  padding-top: 30px;
+}
+
+.month__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: var(--rule);
+  display: flex;
+  justify-content: space-between;
+}
+
+.month__count {
+  opacity: 0.6;
+}
+
+.more {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 22px 0 0;
+}
+
+.more a {
+  color: inherit;
+}

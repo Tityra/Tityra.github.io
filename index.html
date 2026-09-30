@@ -6,22 +6,40 @@ layout: default
   <p>{{ site.tagline }}. Every claim carries its source.</p>
 </section>
 
+{% if site.posts.size > 0 %}
+{% assign latest = site.posts.first %}
 <div class="dateline">
-  <span>{{ site.posts.size }} brief{% if site.posts.size != 1 %}s{% endif %}</span>
-  {% if site.posts.size > 0 %}<span>Latest · {{ site.posts.first.date | date: "%Y.%m.%d" }}</span>{% endif %}
+  <span>Latest</span>
+  <span>{{ latest.date | date: "%Y.%m.%d" }}</span>
+  {% if latest.kind %}<span>{{ latest.kind }}</span>{% endif %}
 </div>
 
+{% comment %} The most recent brief leads; a daily series is read newest-first. {% endcomment %}
+<section class="latest">
+  <h2 class="latest__title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  {% if latest.summary %}<p class="latest__summary">{{ latest.summary }}</p>{% endif %}
+</section>
+
+{% if site.posts.size > 1 %}
+<div class="dateline"><span>Earlier</span></div>
 <ul class="briefs">
-  {% for post in site.posts limit: 20 %}
+  {% for post in site.posts offset: 1 limit: 14 %}
   <li class="brief">
     <div class="brief__meta">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
       {% if post.kind %}<br />{{ post.kind }}{% endif %}
     </div>
     <div>
-      <h2 class="brief__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <h3 class="brief__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       {% if post.summary %}<p class="brief__summary">{{ post.summary }}</p>{% endif %}
     </div>
   </li>
   {% endfor %}
 </ul>
+{% if site.posts.size > 15 %}
+<p class="more"><a href="{{ '/archive/' | relative_url }}">All {{ site.posts.size }} briefs →</a></p>
+{% endif %}
+{% endif %}
+{% else %}
+<div class="dateline"><span>No briefs yet</span></div>
+{% endif %}

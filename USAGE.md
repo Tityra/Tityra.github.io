@@ -5,8 +5,14 @@
 ```bash
 ./scripts/new-brief.sh            # today (Asia/Seoul), or pass YYYY-MM-DD
 # fill the file in
+./scripts/check-brief.sh _posts/YYYY-MM-DD-ai-daily-brief.md
 git add _posts/ && git commit -m "brief: <headline>" && git push
 ```
+
+`check-brief.sh` is the gate the scheduled job passes through, so run it by hand
+too. It fails on a missing field, a leftover `TODO`, an empty body, a figure
+without a label or url, more than three figures, and any link that does not
+resolve. **If it fails, do not publish** — fix it, or publish nothing.
 
 `new-brief.sh` **exits 3 if a brief already exists for that date**. A daily cron
 runs twice more often than you would think — a retry, a manual re-run, a job

@@ -144,6 +144,19 @@ that is a correct brief, not a failed one.
 - Anything about a private individual who is not a public figure acting in a
   public capacity.
 
+## Publishing without a reader
+
+The daily brief is written and published by an agent on a schedule. Nobody reads
+it before it appears. That is a deliberate choice, and it puts the whole weight
+of this policy on one script: `scripts/check-brief.sh` runs before every commit
+and refuses to publish a brief with a missing field, a leftover placeholder, an
+empty body, an unattributed figure, or **a single link that does not resolve**.
+
+The job commits only `_posts/`. It never amends, never force-pushes, and never
+touches another post. If the check cannot be made to pass, nothing is published
+and the failure is reported — a day with no brief is a correct outcome; a broken
+brief under a real name is not.
+
 ## Checks before publishing
 
 - Every link resolves, and points at what the text says it points at.

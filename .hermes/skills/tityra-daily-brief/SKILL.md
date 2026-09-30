@@ -1,6 +1,6 @@
 ---
 name: tityra-daily-brief
-description: "Use when producing the daily AI/LLM industry brief for the Tityra Jekyll blog. Research the last 24 hours across models, agentic AI, MCP and developer communities; apply POLICY_NEWS.md; write a sourced Markdown post into _posts/ via scripts/new-brief.sh; leave it review-ready without publishing unless explicitly requested."
+description: "Use when producing the daily AI/LLM industry brief for the Tityra Jekyll blog. Research the last 24 hours across models, agentic AI, MCP, tools and developer communities; apply POLICY_NEWS.md; write a sourced Markdown post into _posts/ via scripts/new-brief.sh; validate it with scripts/check-brief.sh and publish only if that passes."
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -166,28 +166,33 @@ failure as inventing facts.
 
 ## Publishing
 
-**Do not commit or push unless the user explicitly requests it**, matching the
-convention in the other Hermes site skills.
+The daily brief **publishes itself**. Nobody reads it before it goes out, so the
+gate is the check, not a person:
 
-When publishing is requested:
+```bash
+./scripts/check-brief.sh _posts/<the file you wrote>
+```
+
+It fails on a missing title, date, summary or `sources`; on any leftover `TODO`;
+on an empty body; on a figure without a `label` or `url`; on more than three
+figures; and on **any link that does not resolve**.
+
+**Only if it passes:**
 
 ```bash
 git add _posts/ && git commit -m "brief: <headline>" && git push
 ```
 
+Commit **only** `_posts/`. Never `git add -A`, never amend, never force-push,
+never touch another post. If the check fails, fix what it names and run it
+again. **If it cannot be made to pass, publish nothing and report why** — a day
+with no brief is a correct outcome, and a broken brief under the owner's name is
+not.
+
 GitHub Pages rebuilds on push. Verify:
 
 ```bash
 gh api repos/Tityra/Tityra.github.io/pages/builds/latest --jq '{status,err:.error.message}'
-```
-
-To run unattended, the safer shape is a branch and a pull request rather than a
-push to `main`, so a person still says yes before anything appears under the
-owner's name:
-
-```bash
-git switch -c brief/$(date +%F) && git add _posts/ && git commit -m "brief: …"
-git push -u origin HEAD && gh pr create --fill
 ```
 
 ## Corrections

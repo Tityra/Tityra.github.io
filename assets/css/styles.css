@@ -579,10 +579,17 @@ body {
 .figures__label {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
   text-transform: uppercase;
   opacity: 0.72;
-  max-width: 22ch;
+  max-width: 30ch;
+}
+
+.figures__item {
+  min-width: 0;
+  flex: 1 1 200px;
+  max-width: 320px;
 }
 
 /* --- 5 · paper strata ----------------------------------------------------

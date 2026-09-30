@@ -76,8 +76,13 @@ If an area has nothing new in the window, it has nothing new. Record that.
 ```
 
 It prints the path and **exits 3 if a brief already exists for that date** — a
-cron can fire twice. On exit 3, edit the existing file; never create a second
-post for one day.
+cron can fire twice. On exit 3, edit that brief; never create a second brief for
+one day.
+
+**Never delete, rename or overwrite any other post to make room.** Other posts
+may share the date and are not yours to remove. If the script refuses and the
+existing file is not that day's brief, stop and report it rather than clearing
+the way.
 
 Fill in the skeleton, keeping its sections and order: `TOP 3`, `Models`,
 `Agentic AI & Agent Skills`, `MCP & Plug-in`, `Community`.

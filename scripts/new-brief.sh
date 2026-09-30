@@ -16,10 +16,13 @@ if ! [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
   exit 2
 fi
 
-existing=$(find _posts -maxdepth 1 -name "${DATE}-*.md" -print -quit 2>/dev/null || true)
+# Only a *brief* for this date blocks a new one. Matching any post for the date
+# was wrong: the agent's route around it was to delete the other post, which is
+# how the launch note was lost on 2026-09-30.
+existing=$(find _posts -maxdepth 1 -name "${DATE}-ai-daily-brief.md" -print -quit 2>/dev/null || true)
 if [ -n "$existing" ]; then
   echo "A brief already exists for ${DATE}: ${existing}" >&2
-  echo "Edit that file rather than adding a second post for the same day." >&2
+  echo "Edit that file. Never delete or overwrite another post to make room." >&2
   exit 3
 fi
 

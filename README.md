@@ -42,6 +42,8 @@ assets/css/styles.css The design system
 POLICY_NEWS.md        Standing editorial policy
 USAGE.md              How to write and publish a brief
 scripts/new-brief.sh  Creates a dated skeleton; refuses duplicates
+scripts/check-brief.sh  Gate before publishing; fails on bad links, TODOs, duplication
+scripts/install-skill.sh  Installs the repo skill where the cron runner looks
 .hermes/skills/       Agent skill for the daily brief
 ```
 
@@ -65,8 +67,19 @@ recorded per machine in `~/.hermes/config.yaml` under `trusted_project_dirs`.
 So one command after cloning:
 
 ```bash
-hermes skills trust /path/to/Tityra
+hermes skills trust /path/to/Tityra   # repo-local skills in interactive sessions
+./scripts/install-skill.sh            # and where the CRON RUNNER looks
 ```
+
+Both are needed. `trust` loads repo-local skills in sessions started inside the
+repository; **a scheduled job is not such a session**, even with `workdir` set
+to the repo. Without `install-skill.sh` a cron run reports `Skill(s) not found
+and skipped` and carries on without it — which failed quietly here, because the
+agent read `SKILL.md` out of the working directory anyway and the output still
+looked right.
+
+Re-run `install-skill.sh` whenever `SKILL.md` changes; the repository stays the
+source of record.
 
 Then recreate the schedule:
 
@@ -79,8 +92,10 @@ hermes cron create "0 6 * * *" \
   --model gpt-6-sol --provider openai-codex
 ```
 
-There is deliberately no second copy of the skill under `~/.hermes/skills/`.
-Two copies drift, and the one in version control is the one that should win.
+The copy under `~/.hermes/skills/` is installed *from* this repository by
+`scripts/install-skill.sh` and is not edited in place. The repository is the
+source of record; that copy exists only because the cron runner cannot see
+repo-local skills.
 
 ## Local preview
 

@@ -92,6 +92,12 @@ empty section is a correct answer, and a fabricated one is not.
 producing a thin brief that looks like a quiet news day. A brief that silently
 under-reports is worse than one that admits its coverage was broken.
 
+The search backend is **intermittently** unavailable — on 2026-10-01 the 06:00
+run could not search, a different job searched fine at 07:06, and attempts after
+09:00 failed again. That is why the job is scheduled at **06:00, 08:00 and
+10:00**: a bad window at six is not a lost day. Stopping cleanly is therefore
+the right move, not a wasted run — the next attempt will try again.
+
 If an area has nothing new in the window, it has nothing new. Record that.
 
 ### 3. Write
@@ -100,9 +106,21 @@ If an area has nothing new in the window, it has nothing new. Record that.
 ./scripts/new-brief.sh            # today, or pass YYYY-MM-DD
 ```
 
-It prints the path and **exits 3 if a brief already exists for that date** — a
-cron can fire twice. On exit 3, edit that brief; never create a second brief for
-one day.
+It prints the path and **exits 3 if a brief already exists for that date**.
+
+**On exit 3, check whether the day is already done:**
+
+```bash
+./scripts/check-brief.sh _posts/<the existing file>
+```
+
+If it **passes**, today's brief is already written and published — report that
+and stop. Do not rewrite it, and do not research again. The job is scheduled
+several times each morning precisely so a failed attempt can be retried; once
+one attempt has succeeded, the later ones must do nothing.
+
+If it **fails**, the earlier attempt left the brief incomplete. Finish it in
+place. Never create a second brief for one day.
 
 **Never delete, rename or overwrite any other post to make room.** Other posts
 may share the date and are not yours to remove. If the script refuses and the

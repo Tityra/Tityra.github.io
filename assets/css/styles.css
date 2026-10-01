@@ -676,6 +676,7 @@ a.figures__value:hover {
 .brief__title,
 .brief__title a,
 .prose h2,
+.prose h3,
 .masthead__name,
 .month__title {
   color: var(--deep);
@@ -698,6 +699,36 @@ a.figures__value:hover {
 
 a.figures__value:hover {
   border-bottom-color: var(--deep);
+}
+
+/* --- bold: the accent inside a sentence --------------------------------
+   Ink reads, Deep points. Weight is the second half of that: a bold phrase
+   leaves the blue and lands in Deep, so an accent is one signal made of two
+   parts rather than two signals competing.
+
+   A bold run that opens a bullet is structure, not emphasis — it is the
+   item's name — so it takes the body face at 600 and sits with the headings.
+   Bold inside a sentence stays at 700, where it has to cut through text that
+   is already the same size. */
+.prose strong,
+.prose b {
+  color: var(--deep);
+  font-weight: 700;
+}
+
+.prose li > strong:first-child,
+.prose li > b:first-child,
+.prose li > p:first-child > strong:first-child {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+/* A bold phrase inside a link would read as two accents at once; the link's
+   own underline is already the signal there. */
+.prose a strong,
+.prose a b {
+  color: inherit;
+  font-weight: 600;
 }
 
 /* --- Ring: the one marker ------------------------------------------------

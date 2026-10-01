@@ -116,6 +116,30 @@ The copy under `~/.hermes/skills/` is installed *from* this repository by
 source of record; that copy exists only because the cron runner cannot see
 repo-local skills.
 
+## Triggering a run by hand
+
+**Prefer not to.** `hermes cron run <id>` writes a `.fire-*.lock` in
+`~/.hermes/cron/` and the execution's *owner* is the shell that launched it. If
+that shell is killed before the run reaches a terminal state — a tool timeout, a
+closed terminal, a disconnected session — the execution is recorded as `unknown`
+and **the lock is never released**. The scheduler then cannot fire the job and
+every attempt fails with:
+
+```
+409 {"detail":"Job is already running or was claimed by another scheduler"}
+Fire claim was not acquired
+```
+
+If that happens, with no `cron run` or `cron tick` process alive:
+
+```bash
+pgrep -fl "cron run|cron tick"        # must be empty
+rm -f ~/.hermes/cron/.fire-*.lock     # NOT .tick.lock or .jobs.lock
+```
+
+`hermes cron doctor` does **not** detect this — it reported no issues while the
+job was blocked.
+
 ## Local preview
 
 ```bash

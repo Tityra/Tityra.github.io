@@ -116,6 +116,29 @@ The copy under `~/.hermes/skills/` is installed *from* this repository by
 source of record; that copy exists only because the cron runner cannot see
 repo-local skills.
 
+## Where the brief's research comes from
+
+`scripts/collect-sources.py` fetches public RSS and Atom feeds over plain HTTP
+using only the standard library — Google AI, OpenAI, Cloudflare, Hugging Face,
+GitHub, arXiv cs.AI and cs.LG, Hacker News, and Reddit when it will answer. **No
+API key, no search backend, no tool gateway, no login.**
+
+That is deliberate. The job has already been stopped once by a search backend
+becoming unavailable overnight, and a daily publication should not depend on a
+credential that can lapse. The collector runs as the cron job's `--script`, so
+its output is injected into the agent's prompt: the agent chooses among items
+that demonstrably exist rather than recalling items it believes exist.
+
+Install it where Hermes looks, and keep it in step with the repo copy:
+
+```bash
+cp scripts/collect-sources.py ~/.hermes/scripts/tityra-collect.py
+```
+
+If a feed is unreachable the collector says so by name, and the brief is
+required to report that its coverage was incomplete rather than imply a quiet
+day.
+
 ## Triggering a run by hand
 
 **Prefer not to.** `hermes cron run <id>` writes a `.fire-*.lock` in

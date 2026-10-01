@@ -54,6 +54,25 @@ The repository timezone is `Asia/Seoul` (`_config.yml`).
 
 ### 2. Research
 
+**Candidate items arrive in the prompt.** The cron job runs
+`scripts/collect-sources.py` first, which pulls public feeds over plain HTTP
+with no credential of any kind, and injects the results. Start there: those
+items are real and carry real URLs.
+
+**Open the URLs of the items you intend to use.** A feed title is metadata, not
+a confirmed fact. If fetching works, write the brief normally.
+
+**If fetching is unavailable**, write in *feed-only mode*: report what was
+published and link it, and assert nothing you have not read — no prices,
+benchmarks, version numbers or quantities. Say in the brief that it was compiled
+from announcement titles without reading each one. **A thinner brief that is
+true beats a fuller one that is guessed.**
+
+If the collector names UNREACHABLE sources, say coverage was incomplete and name
+them, rather than letting a gap read as a quiet day.
+
+### 2b. Searching, when it is available
+
 Cover four areas. **Search at least two or three times per area** — a single
 query is not coverage.
 

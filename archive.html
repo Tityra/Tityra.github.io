@@ -28,7 +28,7 @@ permalink: /archive/
   </h2>
   <ul class="briefs">
     {% for post in month.items %}
-    <li class="brief">
+    <li class="brief" data-published="{{ post.date | date: '%s' }}">
       <div class="brief__meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%m.%d" }}</time>
         {% if post.kind %}<br />{{ post.kind }}{% endif %}

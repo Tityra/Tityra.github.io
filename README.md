@@ -23,6 +23,25 @@ data, no cross-site tracking. The public counter endpoint is read back in the
 footer to show today's and total reads. Every part of it fails silently: a
 blocked request leaves the footer unchanged rather than printing a zero.
 
+## Colours
+
+Four, each with exactly one job. Three come from the CLM research deck this
+site's design is taken from; the fourth is the colour the bird actually wears.
+
+| | | job |
+| --- | --- | --- |
+| **Paper** | `#F0EBDE` | background |
+| **Ink** | `#1F2BE0` | body text, links, rules |
+| **Deep** | `#11131F` | weight — headlines, the mark, the figures strip |
+| **Ring** | `#C8402C` | one marker only: the live dot, and "new since your last visit" |
+
+**Ring is never a text colour.** On paper its contrast is weaker than Ink, so it
+marks and does not read. It should appear at most once or twice on a screen; a
+third use means it has started decorating, and a marker that decorates stops
+meaning anything.
+
+Adding a fifth colour means finding a fifth job first.
+
 ## Stack
 
 - GitHub Pages + Jekyll (no build step to maintain; GitHub builds it)

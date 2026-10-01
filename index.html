@@ -15,7 +15,7 @@ layout: default
 </div>
 
 {% comment %} The most recent brief leads; a daily series is read newest-first. {% endcomment %}
-<section class="latest">
+<section class="latest" data-published="{{ latest.date | date: '%s' }}">
   <h2 class="latest__title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
   {% if latest.summary %}<p class="latest__summary">{{ latest.summary }}</p>{% endif %}
 </section>
@@ -24,7 +24,7 @@ layout: default
 <div class="dateline"><span>Earlier</span></div>
 <ul class="briefs">
   {% for post in site.posts offset: 1 limit: 14 %}
-  <li class="brief">
+  <li class="brief" data-published="{{ post.date | date: '%s' }}">
     <div class="brief__meta">
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
       {% if post.kind %}<br />{{ post.kind }}{% endif %}

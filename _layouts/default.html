@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..500&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500&family=Noto+Serif+KR:wght@500&family=Noto+Sans+KR:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=6" />
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=7" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/tityra-32.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="48x48" href="{{ '/assets/img/tityra-48.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/img/tityra-96.png' | relative_url }}" />
@@ -69,6 +69,34 @@
     </div>
 
     <script>
+      // Ring's one job: mark what has appeared since this reader last came.
+      // Stored only in their own browser, never sent anywhere. A first-time
+      // reader sees nothing marked - everything is new, so nothing is news.
+      (function () {
+        var KEY = "tityra:lastVisit";
+        var previous = 0;
+        try {
+          previous = parseInt(window.localStorage.getItem(KEY) || "0", 10) || 0;
+        } catch (e) {
+          return; // private mode, blocked storage: no marker, page unaffected
+        }
+        if (previous) {
+          document.querySelectorAll("[data-published]").forEach(function (el) {
+            var published = parseInt(el.getAttribute("data-published"), 10);
+            if (!published || published <= previous) return;
+            var title = el.querySelector(".latest__title, .brief__title");
+            if (!title) return;
+            var tag = document.createElement("span");
+            tag.className = "is-new";
+            tag.textContent = "New";
+            title.appendChild(tag);
+          });
+        }
+        try {
+          window.localStorage.setItem(KEY, String(Math.floor(Date.now() / 1000)));
+        } catch (e) {}
+      })();
+
       // Scroll-reveal for rows below the fold. The page is complete without
       // this: the class is only added when motion is welcome, so with
       // JavaScript off, or reduced motion on, everything is simply visible.

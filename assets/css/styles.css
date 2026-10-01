@@ -2,10 +2,14 @@
    One ink on gridded paper: nothing here uses a second colour to make a point. */
 
 :root {
+  /* Four colours, each with one job. Paper and Ink come from the CLM deck;
+     Deep is the deck's own stage background, and the bird's black wings; Ring
+     is the tityra's red eye-ring and bill base. See README for the rule. */
   --paper: #f0ebde;
   --ink: #1f2be0;
   --grid: #dbd8de;
   --deep: #11131f;
+  --ring: #c8402c;
 
   --font-display: "Newsreader", "Noto Serif KR", Georgia, serif;
   --font-body: "Hanken Grotesk", "Noto Sans KR", system-ui, sans-serif;
@@ -657,4 +661,61 @@ a.figures__value:hover {
    footer that says nothing. */
 .tally {
   font-variant-numeric: tabular-nums;
+}
+
+
+/* ======================================================= the four colours ===
+   Deep carries weight: headlines and the figures strip stop being the same
+   blue as the body, which is most of the hierarchy this page was missing.
+   Ink keeps body text, links and rules. Ring marks one thing and no more. */
+
+.lede h1,
+.article__header h1,
+.latest__title,
+.latest__title a,
+.brief__title,
+.brief__title a,
+.prose h2,
+.masthead__name,
+.month__title {
+  color: var(--deep);
+}
+
+.brief__title a:hover,
+.latest__title a:hover {
+  border-bottom-color: var(--deep);
+}
+
+.figures {
+  color: var(--deep);
+  background: rgba(17, 19, 31, 0.045);
+  border-bottom-color: var(--deep);
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-left: -18px;
+  margin-right: -18px;
+}
+
+a.figures__value:hover {
+  border-bottom-color: var(--deep);
+}
+
+/* --- Ring: the one marker ------------------------------------------------
+   The live dot, and "new since your last visit". Never a text colour: on
+   paper its contrast is weaker than Ink, so it marks and never reads. */
+.pulse {
+  background: var(--ring);
+}
+
+.is-new {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ring);
+  padding: 2px 7px;
+  margin-left: 8px;
+  vertical-align: 3px;
+  white-space: nowrap;
 }

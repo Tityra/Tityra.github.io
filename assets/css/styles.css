@@ -719,3 +719,18 @@ a.figures__value:hover {
   vertical-align: 3px;
   white-space: nowrap;
 }
+
+
+/* On paper, nothing is scrolled into view: the reveal must never hide a brief
+   from print. Same reasoning as the failsafe in the layout script. */
+@media print {
+  .js-reveal .brief,
+  .js-reveal .month {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .progress,
+  .masthead__nav {
+    display: none;
+  }
+}

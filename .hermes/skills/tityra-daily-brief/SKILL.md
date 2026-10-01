@@ -27,10 +27,12 @@ a machine-specific absolute path.
 the most recent brief in `_posts/` before drafting; repository conventions may
 change after this skill is written, and the policy wins wherever the two differ.
 
-**Output language: Korean**, with technical terms left in the original
-(Agentic AI, MCP, tool use, context window, fine-tuning — never translated or
-paraphrased). The site chrome is English. Change this line and the section
-defaults if the blog's language changes.
+**Output language: English**, matching the site chrome and the published
+archive, with technical terms left in the original (Agentic AI, MCP, tool use,
+context window, fine-tuning — never translated or paraphrased).
+
+The language and the exact phrases for an empty section live in `_config.yml`
+under `brief.*`. Change them there, not here.
 
 ## When to Use
 

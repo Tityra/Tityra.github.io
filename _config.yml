@@ -20,9 +20,9 @@ kramdown:
 # Guidelines are always written in English (scripts/check-english.sh enforces
 # it); these are content values, referred to by name from those guidelines.
 brief:
-  post_language: Korean
-  empty_section: "신규 없음"
-  no_news_report: "금일 신규 건 없음"
+  post_language: English
+  empty_section: "Nothing new"
+  no_news_report: "No new items today"
 
 defaults:
   - scope: { path: "", type: "posts" }

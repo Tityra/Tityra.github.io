@@ -49,11 +49,6 @@ scripts/install-skill.sh  Installs the repo skill where the cron runner looks
 
 ## The daily brief
 
-The job runs at **06:00, 08:00 and 10:00** (Asia/Seoul). It is one brief a day,
-not three: the first attempt that succeeds writes it, and later attempts find it
-already there and stop. The repetition exists because the search backend is
-intermittently unavailable, so a bad window at six is not a lost day.
-
 The recurring post is produced by the Hermes agent skill in
 [`.hermes/skills/tityra-daily-brief/`](.hermes/skills/tityra-daily-brief/SKILL.md).
 The cron job's only instruction is to run that skill — the research brief, the

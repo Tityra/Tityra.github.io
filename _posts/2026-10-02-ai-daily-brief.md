@@ -1,6 +1,6 @@
 ---
 title: Cloudflare opened AI Search to general availability as Ai2 released Olmo-core 3
-date: 2026-10-02 09:00:00 +0900
+date: 2026-10-02 00:30:00 +0900
 kind: Daily brief
 summary: Cloudflare made AI Search generally available and opened a managed agent-workspace waitlist; Ai2 released an open MoE training stack.
 figures:

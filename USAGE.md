@@ -15,9 +15,25 @@ without a label or url, more than three figures, and any link that does not
 resolve. **If it fails, do not publish** — fix it, or publish nothing.
 
 `new-brief.sh` **exits 3 if a brief already exists for that date**. A daily cron
-runs twice more often than you would think — a retry, a manual re-run, a job
-crossing midnight — and must never produce two posts for one day or overwrite
-the first.
+runs twice more often than you would think — a retry, a job crossing midnight —
+and an unasked-for second run must never produce two posts for one day or
+overwrite the first.
+
+## Publishing again the same day
+
+Asking for another brief on a day that already has one is allowed:
+
+```bash
+./scripts/run-brief-now.sh          # or: ./scripts/new-brief.sh --edition
+```
+
+It writes `_posts/<date>-ai-daily-brief-2.md` (then `-3`), labelled *Daily brief
+— second edition*, stamped later than every brief already published that day.
+
+An edition carries **only what is new since the earlier one**. `check-brief.sh`
+fails it if it re-anchors a source an earlier brief from the same day used, so a
+second edition cannot be a reprint of the first. If nothing new has happened,
+the correct second edition is none at all.
 
 **If nothing happened anywhere today, delete the file and publish nothing.** An
 empty day with no post is correct. A post that exists to keep a streak is the

@@ -115,8 +115,8 @@ under-reports is worse than one that admits its coverage was broken.
 
 The search backend is **intermittently** unavailable — on 2026-10-01 the 06:00
 run could not search, a different job searched fine at 07:06, and attempts after
-09:00 failed again. The job runs once a day, so a bad window means no brief that
-morning. Stopping cleanly and saying why is still the right move: a brief that
+09:00 failed again. The schedule fires once a day, so a bad window means no
+brief that morning. Stopping cleanly and saying why is still the right move: a brief that
 silently under-reports is worse than a day with none, and the report says plainly
 that search was the blocker rather than that the news was quiet.
 
@@ -136,17 +136,38 @@ It prints the path and **exits 3 if a brief already exists for that date**.
 ./scripts/check-brief.sh _posts/<the existing file>
 ```
 
-If it **passes**, today's brief is already written and published — report that
-and stop. Do not rewrite it, and do not research again. This matters whenever a
-run is triggered by hand after the scheduled one has already succeeded.
-
 If it **fails**, the earlier attempt left the brief incomplete. Finish it in
-place. Never create a second brief for one day.
+place — one brief, repaired, not a second one beside it.
 
-**Never delete, rename or overwrite any other post to make room.** Other posts
-may share the date and are not yours to remove. If the script refuses and the
-existing file is not that day's brief, stop and report it rather than clearing
-the way.
+If it **passes**, this morning's brief is already out. You are now in an extra
+run, because the schedule fires once and it has already fired: someone asked for
+this one. More than one brief a day is allowed, on one condition.
+
+**The condition: an edition carries only what the day has not carried yet.**
+Re-read the brief or briefs already published today and list the sources they
+stand on. Then look at what the window holds now. If everything in it is already
+covered, publish nothing and say so — "today's brief is already out, and nothing
+has happened since" is a complete, correct report. A second edition that
+restates the first is the redundancy this whole policy exists to prevent.
+
+If there *is* something new:
+
+```bash
+./scripts/new-brief.sh --edition
+```
+
+It writes `_posts/<date>-ai-daily-brief-2.md` (then `-3`, and so on), marks it
+`Daily brief — second edition`, and stamps it later than every brief already
+published that day so the day reads in order. `check-brief.sh` then refuses the
+edition if it re-anchors any source an earlier edition of the same day used.
+
+Write the edition as what changed since the last one. Do not re-summarise the
+morning for context; the earlier brief is one click away and still true.
+
+**Never delete, rename or overwrite any other post to make room** — not the
+morning brief, not an earlier edition, not a post that merely shares the date.
+If the script refuses and the existing file is not that day's brief, stop and
+report it rather than clearing the way.
 
 Fill in the skeleton, keeping its sections and order: `TOP 3`, `Models`,
 `Agentic AI & Agent Skills`, `MCP & Plug-in`, `Tools & Open Source`,

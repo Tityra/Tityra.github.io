@@ -17,6 +17,7 @@ if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
 fi
 
 exec python3 - "$FILE" <<'PY'
+import datetime
 import pathlib
 import re
 import sys
@@ -25,6 +26,25 @@ import urllib.request
 path = pathlib.Path(sys.argv[1])
 text = path.read_text(encoding="utf-8")
 problems = []
+
+
+def anchored_urls(document):
+    """Every URL the document stands on: the inline links in its body and the
+    `url:` lines in its front matter."""
+    return set(re.findall(r"\]\((https?://[^)\s]+)\)", document)) | {
+        found.strip().strip("'\"")
+        for found in re.findall(r"^\s*url:\s*(\S+)", document, re.M)
+    }
+
+
+def stamp(document):
+    found = re.search(r"^date:\s*(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d)", document, re.M)
+    if not found:
+        return None
+    try:
+        return datetime.datetime.strptime(found.group(1), "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        return None
 
 parts = text.split("---", 2)
 if len(parts) < 3:
@@ -96,6 +116,26 @@ for url, names in sorted(homes.items()):
             f"the same source anchors items in {len(names)} sections "
             f"({', '.join(names)}) — one story, one home: {url}"
         )
+
+# --- an edition says something the day has not said yet ------------------------
+# More than one brief a day is allowed when a reader asks for another. What is
+# not allowed is the same story twice: a later edition that re-anchors a source
+# an earlier one already used is reprinting, not reporting.
+day = re.match(r"(\d{4}-\d\d-\d\d)-ai-daily-brief", path.name)
+mine = stamp(text)
+if day and mine:
+    for sibling in sorted(path.parent.glob(f"{day.group(1)}-ai-daily-brief*.md")):
+        if sibling.resolve() == path.resolve():
+            continue
+        other = sibling.read_text(encoding="utf-8")
+        when = stamp(other)
+        if when is None or when >= mine:
+            continue  # only what was published before this one can be repeated
+        for url in sorted(anchored_urls(text) & anchored_urls(other)):
+            problems.append(
+                f"{sibling.name} already covered this source earlier today — "
+                f"an edition carries what is new since it: {url}"
+            )
 
 if problems:
     print(f"NOT FIT TO PUBLISH — {path}")

@@ -63,6 +63,7 @@ USAGE.md              How to write and publish a brief
 scripts/new-brief.sh  Creates a dated skeleton; refuses duplicates
 scripts/check-brief.sh  Gate before publishing; fails on bad links, TODOs, duplication
 scripts/install-skill.sh  Installs the repo skill where the cron runner looks
+scripts/run-brief-now.sh  Publishes another brief today, on demand
 .hermes/skills/       Agent skill for the daily brief
 ```
 
@@ -139,29 +140,44 @@ If a feed is unreachable the collector says so by name, and the brief is
 required to report that its coverage was incomplete rather than imply a quiet
 day.
 
-## Triggering a run by hand
+## Publishing again the same day
 
-**Prefer not to.** `hermes cron run <id>` writes a `.fire-*.lock` in
-`~/.hermes/cron/` and the execution's *owner* is the shell that launched it. If
-that shell is killed before the run reaches a terminal state — a tool timeout, a
-closed terminal, a disconnected session — the execution is recorded as `unknown`
-and **the lock is never released**. The scheduler then cannot fire the job and
-every attempt fails with:
+The schedule publishes one brief each morning and needs nothing from anyone. To
+publish another one the same day:
+
+```bash
+./scripts/run-brief-now.sh
+```
+
+The run writes a second edition — `_posts/<date>-ai-daily-brief-2.md`, labelled
+*Daily brief — second edition* — but **only if something has happened that the
+day's earlier briefs do not already carry**. If nothing has, it reports that and
+publishes nothing, which is the intended answer rather than a failure.
+`check-brief.sh` refuses an edition that re-anchors a source an earlier edition
+of the same day used, so a repeat cannot reach the site even by accident.
+
+### Why not `hermes cron run`, or the dashboard's Run-now button
+
+Both of them claim the job's *upcoming occurrence*, and an occurrence can be
+completed once. The day's first run — scheduled or manual — records it, and
+every later attempt at the same occurrence is refused:
 
 ```
 409 {"detail":"Job is already running or was claimed by another scheduler"}
 Fire claim was not acquired
 ```
 
-If that happens, with no `cron run` or `cron tick` process alive:
+This is the occurrence ledger in `~/.hermes/cron/executions.db` doing its job,
+not a stuck lock. The `.fire-*.lock` files in `~/.hermes/cron/` are `flock`
+handles, one per job; their presence on disk means nothing and deleting them
+fixes nothing. (An earlier version of this README said otherwise. It was wrong.)
 
-```bash
-pgrep -fl "cron run|cron tick"        # must be empty
-rm -f ~/.hermes/cron/.fire-*.lock     # NOT .tick.lock or .jobs.lock
-```
+`run-brief-now.sh` goes through Hermes' `trigger_job` instead, which stamps the
+fire as **manual** — exempt from the once-per-occurrence rule, and usable as
+many times a day as you like. The scheduler then runs it inside the gateway on
+its next tick, so the run does not die with your terminal.
 
-`hermes cron doctor` does **not** detect this — it reported no issues while the
-job was blocked.
+`hermes cron doctor` reports nothing in either case.
 
 ## Local preview
 

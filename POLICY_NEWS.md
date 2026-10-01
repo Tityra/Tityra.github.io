@@ -156,6 +156,18 @@ A brief covers each story **once**.
 `scripts/check-brief.sh` enforces this: it fails if one source anchors items in
 more than one body section.
 
+### More than one brief in a day
+
+The schedule publishes one brief each morning. A reader may ask for another the
+same day, and that is allowed — but one story still has one home, and the home
+is whichever edition reached it first. A later edition carries what is new since
+the earlier one and does not restate it: a reader who read the morning should
+find nothing in the evening they have already read. If nothing new has happened,
+the correct second edition is none at all.
+
+`check-brief.sh` enforces that too: an edition that re-anchors a source an
+earlier brief from the same day already used does not publish.
+
 ## What does not go in
 
 - Rumours without a named reporter or outlet.

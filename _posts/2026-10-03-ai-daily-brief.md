@@ -1,6 +1,6 @@
 ---
 title: NVIDIA added a 64GB DGX Spark as OpenAI published a GPT-6 model guide
-date: 2026-10-03 11:20:00 +0900
+date: 2026-10-03 11:10:00 +0900
 kind: Daily brief
 summary: NVIDIA announced a 64GB DGX Spark configuration for October 23; OpenAI published a practical guide to the GPT-6 family; AWS put an MCP-compatible web search in front of Claude Desktop.
 figures:

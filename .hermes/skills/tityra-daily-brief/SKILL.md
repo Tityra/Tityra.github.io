@@ -54,37 +54,52 @@ The repository timezone is `Asia/Seoul` (`_config.yml`).
 
 ### 2. Research
 
-**Candidate items arrive in the prompt.** The cron job runs
-`scripts/collect-sources.py` first, which pulls public feeds over plain HTTP
-with no credential of any kind, and injects the results. Start there: those
-items are real and carry real URLs.
+Nothing is injected into your prompt. **You do the research**, with the fetch
+tool, starting from the watchlist below. There is no feed collector any more and
+no search backend: what you publish is what you went and read.
 
-**Open the URLs of the items you intend to use.** A feed title is metadata, not
-a confirmed fact. If fetching works, write the brief normally.
+**First, read what this blog has already said.** Open the three most recent
+`_posts/*-ai-daily-brief*.md` and note every `url:` under their `sources:`. A
+story this blog has already carried is not news again, and **if one outlet led
+the previous brief it does not lead this one** — unless the new story is plainly
+bigger than everything else you found, in which case say in the brief why.
 
-**If fetching is unavailable**, write in *feed-only mode*: report what was
-published and link it, and assert nothing you have not read — no prices,
-benchmarks, version numbers or quantities. Say in the brief that it was compiled
-from announcement titles without reading each one. **A thinner brief that is
-true beats a fuller one that is guessed.**
+**Then work the watchlist.** These are pages, not feeds; read them and follow
+what looks significant through to the thing itself.
 
-If the collector names UNREACHABLE sources, say coverage was incomplete and name
-them, rather than letting a gap read as a quiet day.
+| | where |
+| --- | --- |
+| **Labs and model vendors** | [OpenAI](https://openai.com/news/) · [Anthropic](https://www.anthropic.com/news) · [Google AI](https://blog.google/technology/ai/) · [Google DeepMind](https://deepmind.google/discover/blog/) · [Mistral](https://mistral.ai/news) · [Alibaba Qwen](https://qwenlm.github.io/blog/) · [Z.ai / Zhipu](https://z.ai/) · [DeepSeek](https://api-docs.deepseek.com/news) · [xAI](https://x.ai/news) · [NVIDIA](https://blogs.nvidia.com/) · [Microsoft](https://news.microsoft.com/source/topics/ai/) |
+| **Artefacts** | [Hugging Face blog](https://huggingface.co/blog) · [Hugging Face papers](https://huggingface.co/papers) · [GitHub Trending](https://github.com/trending) · [arXiv cs.AI](https://arxiv.org/list/cs.AI/recent) · [arXiv cs.CL](https://arxiv.org/list/cs.CL/recent) · [arXiv cs.LG](https://arxiv.org/list/cs.LG/recent) |
+| **Discussion** | [Hacker News](https://news.ycombinator.com/) · [r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/) · [r/MachineLearning](https://www.reddit.com/r/MachineLearning/) · [r/ClaudeAI](https://www.reddit.com/r/ClaudeAI/) · [r/OpenAI](https://www.reddit.com/r/OpenAI/) |
 
-**Read the two blocks at the end of the collector's output before choosing a
-lead story.**
+The list is a floor, not a ceiling. If a story points somewhere not on it, go
+there. If a page has moved, say so in the brief rather than quietly skipping it.
 
-`BY SOURCE` and `SKEW` tell you how the day's candidates are distributed. A
-source that publishes ten times a day is not ten times more important than one
-that publishes once; it is simply louder. If one outlet supplied most of the
-items, that is a fact about its publishing schedule, not about the news.
+**Three things this method does not give you for free, so you have to do them
+by hand:**
 
-`ALREADY COVERED` lists what the last three briefs stood on. A story this blog
-has already carried is not news again. **If the same outlet led the previous
-brief, it does not lead this one** — unless the new story is plainly bigger than
-everything else on offer, in which case say in the brief why it still leads.
-Three briefs in a row once led with the same vendor this way, and each of them
-was individually defensible.
+1. **Dates.** A newsroom page has no publication window. Before an item goes in
+   the brief, open it and confirm it was published in the last 24 hours. An
+   undated item is not a dated item — leave it out or say the date is unclear.
+   This is the one guarantee the old feed collector gave you and this does not.
+2. **Reddit throttles bursts.** Requesting several subreddits back to back gets
+   you `429`. Space them out, and if one still refuses, name it in Coverage
+   rather than letting its silence read as a quiet day.
+3. **X is not reachable** without a credential this job does not have. Do not
+   cite it from memory. If a story is only on X, it is not yet a story you can
+   publish; wait for the primary source.
+
+**Cloudflare is not on the watchlist.** It publishes roughly ten times a day,
+which is why three briefs in a row once led with it — not because its news was
+the biggest, but because it was the loudest thing in front of the agent. If a
+Cloudflare announcement is genuinely the day's biggest AI story you may still
+carry it, from its own blog, but it has to earn the slot against everything else
+you read.
+
+**Volume is never the signal.** An organisation that posts more often is not
+more important. Judge each item on what it changes for someone building with
+this technology.
 
 ### 2b. Searching, when it is available
 

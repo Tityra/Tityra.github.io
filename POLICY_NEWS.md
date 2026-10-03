@@ -57,8 +57,11 @@ group, because a primary source outranks anyone's account of it.
 
 - Company engineering and research blogs: OpenAI, Anthropic, Google DeepMind and
   Google AI, Meta AI, Microsoft and Azure AI, AWS, NVIDIA, Mistral, xAI,
-  Alibaba Qwen, DeepSeek, Cohere, Hugging Face, Cloudflare, Perplexity,
-  Together, Groq, Stability.
+  Alibaba Qwen, Z.ai, DeepSeek, Cohere, Hugging Face, Perplexity, Together,
+  Groq, Stability.
+- An outlet that publishes many times a day is not many times more important.
+  Infrastructure vendors in particular can fill a day's reading on their own;
+  that is a fact about their publishing schedule, not about the news.
 - Release notes and changelogs, including model and API deprecations.
 - Standards and protocol repositories, including the Model Context Protocol
   specification and SDKs.

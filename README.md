@@ -119,26 +119,29 @@ repo-local skills.
 
 ## Where the brief's research comes from
 
-`scripts/collect-sources.py` fetches public RSS and Atom feeds over plain HTTP
-using only the standard library — Google AI, OpenAI, Cloudflare, Hugging Face,
-GitHub, arXiv cs.AI and cs.LG, Hacker News, and Reddit when it will answer. **No
-API key, no search backend, no tool gateway, no login.**
+The agent goes and reads. There is no feed collector, **no API key, no search
+backend, no tool gateway and no login** — the job fetches pages directly, from a
+watchlist that lives in the skill: the labs' own newsrooms (OpenAI, Anthropic,
+Google AI and DeepMind, Mistral, Qwen, Z.ai, DeepSeek, xAI, NVIDIA, Microsoft),
+the artefacts (Hugging Face blog and papers, GitHub Trending, arXiv), and where
+things get discussed (Hacker News, Reddit).
 
-That is deliberate. The job has already been stopped once by a search backend
-becoming unavailable overnight, and a daily publication should not depend on a
-credential that can lapse. The collector runs as the cron job's `--script`, so
-its output is injected into the agent's prompt: the agent chooses among items
-that demonstrably exist rather than recalling items it believes exist.
+That independence is deliberate. The job has already been stopped once by a
+search backend becoming unavailable overnight, and a daily publication should
+not depend on a credential that can lapse.
 
-Install it where Hermes looks, and keep it in step with the repo copy:
+An earlier version of this pipeline ran `scripts/collect-sources.py`, which
+pulled RSS and Atom feeds and injected the results into the prompt. It was
+removed on 2026-10-03. It had guaranteed that every candidate was published in
+the last 24 hours, but it also decided the news: of the day's announcement
+items, one high-volume infrastructure blog supplied about two thirds, and three
+briefs in a row led with it. A hand-maintained feed list turned out to be an
+editorial position wearing a script's clothes.
 
-```bash
-cp scripts/collect-sources.py ~/.hermes/scripts/tityra-collect.py
-```
-
-If a feed is unreachable the collector says so by name, and the brief is
-required to report that its coverage was incomplete rather than imply a quiet
-day.
+What the collector gave for free, the skill now requires by hand: **confirm each
+item's publication date at the source before it goes in the brief**, space out
+Reddit requests because it throttles bursts, and name in Coverage anything that
+could not be reached rather than letting the gap read as a quiet day.
 
 ## Publishing again the same day
 

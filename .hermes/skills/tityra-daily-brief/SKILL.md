@@ -71,6 +71,21 @@ true beats a fuller one that is guessed.**
 If the collector names UNREACHABLE sources, say coverage was incomplete and name
 them, rather than letting a gap read as a quiet day.
 
+**Read the two blocks at the end of the collector's output before choosing a
+lead story.**
+
+`BY SOURCE` and `SKEW` tell you how the day's candidates are distributed. A
+source that publishes ten times a day is not ten times more important than one
+that publishes once; it is simply louder. If one outlet supplied most of the
+items, that is a fact about its publishing schedule, not about the news.
+
+`ALREADY COVERED` lists what the last three briefs stood on. A story this blog
+has already carried is not news again. **If the same outlet led the previous
+brief, it does not lead this one** — unless the new story is plainly bigger than
+everything else on offer, in which case say in the brief why it still leads.
+Three briefs in a row once led with the same vendor this way, and each of them
+was individually defensible.
+
 ### 2b. Searching, when it is available
 
 Cover four areas. **Search at least two or three times per area** — a single

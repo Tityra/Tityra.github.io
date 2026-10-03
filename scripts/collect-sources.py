@@ -18,24 +18,55 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import pathlib
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 FEEDS = [
+    # Primary vendor and lab announcements. The brief leads with launches, so
+    # this half of the list decides what the day's top story can be. It was
+    # five entries long, and one of them (Cloudflare) publishes about ten
+    # items a day while the others publish one; three briefs in a row then
+    # led with Cloudflare because the candidate list had nothing else to lead
+    # with. Breadth here is the fix, not a rule in the guidelines.
     ("Google AI", "https://blog.google/technology/ai/rss/"),
+    ("Google DeepMind", "https://deepmind.google/blog/rss.xml"),
     ("OpenAI", "https://openai.com/news/rss.xml"),
+    ("Mistral", "https://mistral.ai/rss.xml"),
+    ("Qwen", "https://qwenlm.github.io/blog/index.xml"),
+    ("NVIDIA", "https://blogs.nvidia.com/feed/"),
+    ("Microsoft Azure", "https://azure.microsoft.com/en-us/blog/feed/"),
+    ("AWS Machine Learning", "https://aws.amazon.com/blogs/machine-learning/feed/"),
+    ("Meta Engineering", "https://engineering.fb.com/feed/"),
     ("Cloudflare", "https://blog.cloudflare.com/rss/"),
     ("Hugging Face", "https://huggingface.co/blog/feed.xml"),
     ("GitHub", "https://github.blog/feed/"),
+    ("PyTorch", "https://pytorch.org/blog/feed.xml"),
+    ("Together AI", "https://www.together.ai/blog/rss.xml"),
+    ("Ollama", "https://ollama.com/blog/rss.xml"),
+    ("Replicate", "https://replicate.com/blog/rss"),
+    # Anthropic publishes no public feed; its announcements reach this list
+    # only when another source carries them, and that is worth knowing.
+    #
+    # Papers, coverage and chatter. These never supply a launch, so they are
+    # held to a tighter cap than the announcement feeds above.
     ("arXiv cs.AI", "http://export.arxiv.org/rss/cs.AI"),
     ("arXiv cs.LG", "http://export.arxiv.org/rss/cs.LG"),
+    ("arXiv cs.CL", "http://export.arxiv.org/rss/cs.CL"),
+    ("MIT Technology Review", "https://www.technologyreview.com/topic/artificial-intelligence/feed"),
+    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("Simon Willison", "https://simonwillison.net/atom/everything/"),
     ("Hacker News", "https://hnrss.org/frontpage?points=150"),
     ("r/LocalLLaMA", "https://www.reddit.com/r/LocalLLaMA/.rss"),
     ("r/MachineLearning", "https://www.reddit.com/r/MachineLearning/.rss"),
 ]
+
+# A loud blog must not be able to crowd out a quiet one just by posting more.
+PER_SOURCE = 6
 
 # Reddit rejects a bare bot string; this one is accepted and still identifies us.
 AGENT = "Mozilla/5.0 (Tityra news reader; +https://tityra.github.io/)"
@@ -91,6 +122,30 @@ def entries(raw: bytes) -> list[tuple[str, str, datetime | None]]:
     return found
 
 
+def recent_coverage(limit: int = 3) -> list[tuple[str, list[str]]]:
+    """What the last few briefs already carried, read from the posts themselves.
+
+    The agent cannot remember yesterday, so without this it re-reads the same
+    loud feed and leads with the same vendor again. Three briefs in a row led
+    with Cloudflare that way.
+    """
+    posts = sorted(pathlib.Path("_posts").glob("*-ai-daily-brief*.md"), reverse=True)
+    covered: list[tuple[str, list[str]]] = []
+    for post in posts[:limit]:
+        try:
+            text = post.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        front = text.split("---", 2)[1] if text.startswith("---") else ""
+        urls = re.findall(r"^\s*url:\s*(\S+)", front, re.M)
+        covered.append((post.name, [u.strip().strip("'\"") for u in urls]))
+    return covered
+
+
+def host(url: str) -> str:
+    return urllib.parse.urlsplit(url).netloc.removeprefix("www.")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--hours", type=int, default=24)
@@ -106,6 +161,7 @@ def main() -> int:
     print()
 
     total = 0
+    tally: list[tuple[str, int]] = []
     unreachable: list[str] = []
     for name, url in FEEDS:
         raw = fetch(url)
@@ -123,16 +179,43 @@ def main() -> int:
         if not recent:
             continue
         recent.sort(reverse=True)
+        shown = recent[:PER_SOURCE]
         print(f"## {name}")
-        for when, title, link in recent[:12]:
+        for when, title, link in shown:
             print(f"  - [{when.astimezone(timezone.utc):%Y-%m-%d %H:%MZ}] {title}")
             print(f"    {link}")
             total += 1
+        if len(recent) > len(shown):
+            print(f"  ({len(recent) - len(shown)} more from this source not shown)")
         print()
+        tally.append((name, len(shown)))
 
-    print(f"TOTAL: {total} item(s) in the window.")
+    print(f"TOTAL: {total} item(s) in the window, at most {PER_SOURCE} per source.")
+    if tally:
+        print("BY SOURCE: " + ", ".join(f"{name} {count}" for name, count in sorted(tally, key=lambda row: -row[1])))
+        loudest, count = max(tally, key=lambda row: row[1])
+        if total and count / total > 0.3:
+            print(
+                f"SKEW: {loudest} supplied {count} of {total} items. A source that posts "
+                "more often is not thereby more important — do not let it take the lead "
+                "slot by volume alone."
+            )
     if unreachable:
         print(f"UNREACHABLE: {', '.join(unreachable)} — coverage is incomplete, say so in the report.")
+
+    covered = recent_coverage()
+    if covered:
+        print()
+        print("ALREADY COVERED — the last briefs this blog published:")
+        for name, urls in covered:
+            hosts = sorted({host(u) for u in urls if u.startswith("http")})
+            print(f"  {name}: {', '.join(hosts) or 'no sources listed'}")
+            for u in urls:
+                print(f"    {u}")
+        print("  A story this blog has already carried is not news again. If the same")
+        print("  outlet led the previous brief, it does not lead this one unless the new")
+        print("  story is plainly bigger than everything else on offer — and say why.")
+
     if total == 0:
         print("No items. That is a real answer: publish nothing rather than inventing a brief.")
     return 0

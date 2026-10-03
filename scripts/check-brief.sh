@@ -88,7 +88,22 @@ inline = set(re.findall(r"\]\((https?://[^)\s]+)\)", body))
 for url in sorted(set(figure_urls) | inline):
     clean = url.strip().strip("'\"")
     try:
-        request = urllib.request.Request(clean, headers={"User-Agent": "Mozilla/5.0"})
+        # A bare "Mozilla/5.0" is bot-blocked by several publishers — openai.com
+        # answers it with 403 while serving the same page 200 to a browser. That
+        # is a false negative, and it already cost a brief a source it had read.
+        # The check is still "HTTP 200 or it does not publish"; only the request
+        # looks like a reader now.
+        request = urllib.request.Request(
+            clean,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+                ),
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+            },
+        )
         status = urllib.request.urlopen(request, timeout=25).status
     except Exception as error:  # noqa: BLE001 - any failure is a failure to publish
         status = getattr(error, "code", type(error).__name__)

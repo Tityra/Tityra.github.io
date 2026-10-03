@@ -83,6 +83,22 @@ if figures_block:
     if len(entries) > 3:
         problems.append(f"{len(entries)} figures; the maximum is three")
 
+# --- not published into the future ------------------------------------------
+# Jekyll silently drops a future-dated post. The push succeeds, the Pages build
+# goes green, and the brief is simply not on the site — the worst shape this
+# failure can take, because every signal says it worked. Twice now.
+published = stamp(text)
+if published is None:
+    problems.append("`date:` is missing or not `YYYY-MM-DD HH:MM:SS`")
+else:
+    now = datetime.datetime.now()
+    if published > now:
+        problems.append(
+            f"dated {published:%Y-%m-%d %H:%M} but it is now {now:%Y-%m-%d %H:%M} — "
+            "Jekyll leaves a future-dated post out of the build, so this would "
+            "push and build green and still not appear"
+        )
+
 # --- every link resolves, and points where the text says ---------------------
 inline = set(re.findall(r"\]\((https?://[^)\s]+)\)", body))
 for url in sorted(set(figure_urls) | inline):

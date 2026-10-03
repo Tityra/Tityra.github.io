@@ -143,10 +143,12 @@ empty section is a correct answer, and a fabricated one is not.
 producing a thin brief that looks like a quiet news day. A brief that silently
 under-reports is worse than one that admits its coverage was broken.
 
-The search backend is **intermittently** unavailable — on 2026-10-01 the 06:00
-run could not search, a different job searched fine at 07:06, and attempts after
-09:00 failed again. The schedule fires once a day, so a bad window means no
-brief that morning. Stopping cleanly and saying why is still the right move: a brief that
+There is **no search backend at all** — Hermes' search needs a provider key
+(Brave, Exa, Perplexity, Tavily, SearXNG or Firecrawl) and none is configured,
+which is why runs report that live search was unavailable. You can fetch a page
+you know the address of; you cannot discover one. That is what the watchlist in
+section 2 is for, and why nothing may be written from memory. The schedule fires
+once a day, so a morning where the watchlist cannot be reached means no brief. Stopping cleanly and saying why is still the right move: a brief that
 silently under-reports is worse than a day with none, and the report says plainly
 that search was the blocker rather than that the news was quiet.
 

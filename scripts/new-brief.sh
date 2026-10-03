@@ -43,7 +43,11 @@ if [ -n "$existing" ] && [ "$EDITION" -eq 0 ]; then
 fi
 
 FILE="_posts/${DATE}-ai-daily-brief.md"
-STAMP="${DATE} 09:00:00 +0900"
+# Now, never a fixed hour. This read `09:00:00` while the schedule fires at
+# 06:00, so Jekyll saw a post three hours in the future and left it out of the
+# build that the very same push triggered: a green build, a pushed commit and
+# nothing on the site.
+STAMP="$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M:%S %z')"
 ORDINAL=""
 
 if [ "$EDITION" -eq 1 ]; then

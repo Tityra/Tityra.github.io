@@ -45,7 +45,9 @@ facts in better clothes.
 ```yaml
 ---
 title: The day's lead headline, as a sentence
-date: 2026-09-30 09:00:00 +0900
+date: 2026-09-30 06:10:00 +0900   # when it was written. NEVER the future:
+                                  # Jekyll drops a future-dated post and the
+                                  # build still goes green without it.
 kind: Daily brief          # or: Weekly brief, Note
 summary: One line for the index and the feed.
 sources:

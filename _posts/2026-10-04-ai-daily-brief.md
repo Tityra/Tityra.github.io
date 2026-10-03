@@ -1,6 +1,6 @@
 ---
 title: Aleph Alpha released Kolibri open weights as the MCP Python SDK updated
-date: 2026-10-04 09:00:00 +0900
+date: 2026-10-04 06:10:00 +0900
 kind: Daily brief
 summary: Aleph Alpha released Kolibri's open weights, the MCP Python SDK changed header validation and stream handling, and Codex merged an opt-in tool-discovery change.
 figures:

@@ -62,9 +62,9 @@ standard part of a brief:
 
 ```yaml
 figures:
-  - value: "1,700%"
-    label: Growth in agent requests on Cloudflare's network, year on year
-    url: https://blog.cloudflare.com/agentic-web/
+  - value: "1.7x"
+    label: Two clustered 64GB DGX Sparks against one, in NVIDIA's own Qwen 3.8 27B test
+    url: https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/
 ```
 
 **Every figure is a number a linked source states** — never computed, never

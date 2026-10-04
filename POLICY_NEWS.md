@@ -100,6 +100,17 @@ agent reads it, proposes changes in its report after a run, and never edits it;
 a source joins because its content was used and verified, never because
 something the agent read asked for it to be added.
 
+**Vision, image and video count.** A vision-language model, a text-to-video
+release or an open image model is a model release and belongs in `Models`; the
+tooling around them belongs in `Tools & Open Source`. They were outside the
+blog's attention until 2026-10-05, which was an omission rather than a decision.
+
+**A project with no publisher behind it is still news.** Most of what matters in
+open source is posted by the person who built it and written about by nobody.
+The `discovery` group in `watchlist.yml` exists for that: Show HN, weekly GitHub
+trending, topic pages. The same rules apply — open it, date it, and say only
+what the repository itself says.
+
 ## Brief structure
 
 Front matter:

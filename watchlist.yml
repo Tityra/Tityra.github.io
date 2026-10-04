@@ -51,6 +51,12 @@ models:
     url: https://x.ai/news
     cadence: quiet
     why: Grok releases. The company's main channel is X, which this job cannot read.
+  - name: Meta (Llama)
+    url: https://github.com/meta-llama/llama-models/releases
+    cadence: quiet
+    why: >
+      ai.meta.com answers 400 to a plain fetch, so this is the way in. Release
+      pages are dated, which the date rule needs and a newsroom page does not give.
   - name: NVIDIA
     url: https://blogs.nvidia.com/
     cadence: daily
@@ -126,6 +132,38 @@ tools:
     cadence: quiet
     why: What local running looks like for people who are not building it.
 
+# Vision-language, image and video. Added 2026-10-05 at the administrator's
+# request; until now the blog had no way to see this half of the field at all.
+vision:
+  - name: arXiv cs.CV
+    url: https://arxiv.org/list/cs.CV/recent
+    cadence: daily
+    why: The obvious hole — cs.AI, cs.CL and cs.LG were listed and computer vision was not.
+  - name: Hugging Face trending Spaces
+    url: https://huggingface.co/spaces?sort=trending
+    cadence: daily
+    why: Where an image or video model becomes something you can try, often before it is written about.
+  - name: Black Forest Labs
+    url: https://bfl.ai/announcements
+    cadence: quiet
+    why: FLUX. The most consequential open image models.
+  - name: Stability AI
+    url: https://stability.ai/news
+    cadence: quiet
+    why: Open image and video weights.
+  - name: Runway
+    url: https://runwayml.com/research
+    cadence: quiet
+    why: Video generation research from the people shipping it commercially.
+  - name: Luma AI
+    url: https://lumalabs.ai/news
+    cadence: quiet
+    why: Video and 3D generation.
+  - name: ComfyUI
+    url: https://blog.comfy.org/
+    cadence: quiet
+    why: The tooling layer the image and video community actually runs.
+
 research:
   - name: arXiv cs.AI
     url: https://arxiv.org/list/cs.AI/recent
@@ -163,6 +201,58 @@ community:
     url: https://www.reddit.com/r/OpenAI/.rss
     cadence: quiet
     why: As above, for the other side of the field.
+  - name: r/StableDiffusion
+    url: https://www.reddit.com/r/StableDiffusion/.rss
+    cadence: quiet
+    why: The image and video practitioner community, which nothing else here covered.
+  - name: Simon Willison
+    url: https://simonwillison.net/
+    cadence: daily
+    why: >
+      Tests things himself and writes up what happened, which is a Community item
+      by this blog's own definition — analysis, not reaction to an announcement.
+  - name: Hacker News, best comments
+    url: https://news.ycombinator.com/bestcomments
+    cadence: quiet
+    why: The front page is where the announcement is; this is where the argument is.
+  - name: Lobsters, AI tag
+    url: https://lobste.rs/t/ai
+    cadence: quiet
+    why: Smaller and more technical than Hacker News, and the overlap is low.
+  - name: Interconnects
+    url: https://www.interconnects.ai/
+    cadence: quiet
+    why: Nathan Lambert on training and open weights. Argument with evidence behind it.
+  - name: Latent Space
+    url: https://www.latent.space/
+    cadence: quiet
+    why: Practitioner analysis of the agent and tooling layer.
+
+# Where small projects surface before anyone writes about them. These are
+# browsing surfaces rather than publishers: read them for things to follow, and
+# then go to the project itself. Added after the administrator found
+# image-blaster and LongCat-Video, neither of which any publisher had covered.
+discovery:
+  - name: Show HN
+    url: https://news.ycombinator.com/show
+    cadence: daily
+    why: Where a small tool is posted by the person who built it. Cheap to read.
+  - name: GitHub Trending, weekly
+    url: https://github.com/trending?since=weekly
+    cadence: quiet
+    why: A niche repo can climb over a week without ever reaching the daily board.
+  - name: GitHub topic — text-to-video
+    url: https://github.com/topics/text-to-video
+    cadence: quiet
+    why: Topic pages are a search surface this job otherwise has no way to reach.
+  - name: GitHub topic — VLM
+    url: https://github.com/topics/vlm
+    cadence: quiet
+    why: As above, for vision-language work.
+  - name: Papers with Code
+    url: https://paperswithcode.com/
+    cadence: quiet
+    why: Papers that shipped an implementation, which is the kind worth a brief.
 
 # Secondary. Use only for a story whose primary source does not exist or does
 # not say the thing, and attribute the outlet in the text.
@@ -186,3 +276,6 @@ coverage:
 # X / Twitter     — needs a credential this job does not have. Never cited
 #                   from memory, however much happens there.
 # Moonshot (Kimi) — the page returns an empty body.
+# LMArena        — reachable, but leaderboard movement is easy to report badly
+#                   and hard to date. Left out until there is a reason.
+# Kling          — klingai.com is a product page, not a newsroom.

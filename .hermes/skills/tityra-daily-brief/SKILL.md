@@ -120,10 +120,10 @@ query is not coverage.
 
 | area | what counts |
 | --- | --- |
-| **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Cohere, NVIDIA, …) |
+| **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Z.ai, NVIDIA, …). **Vision-language, image and video models belong here too** — a VLM release is a model release, and the `vision` group of the watchlist feeds this section. |
 | **Agentic AI & Agent Skills** | agent frameworks and products, Agent Skills, notable adoption |
 | **MCP & Plug-in** | Model Context Protocol releases, spec changes, SDKs, significant integrations |
-| **Tools & Open Source** | AI services and products, notable open-source releases, and developer tools worth knowing about — the practical layer between a model and the work |
+| **Tools & Open Source** | AI services and products, notable open-source releases, and developer tools worth knowing about — the practical layer between a model and the work. Includes the graphics and video tooling (ComfyUI and the like), and small projects found through the `discovery` group that no publisher has covered. |
 | **Community** | what developers are actually discussing and shipping |
 
 `POLICY_NEWS.md` has the full **"Where to look"** list. Work it in this order,

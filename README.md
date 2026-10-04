@@ -124,9 +124,11 @@ repo-local skills.
 
 `watchlist.yml` is the list, with a reason beside every entry and a `cadence`
 saying whether it is read on every run or only when the day is quiet. It is
-grouped by what each source feeds — models, agents, MCP, tools, research,
-community, and a short `coverage` group of secondary outlets that are a last
-resort. The file also records what was considered and deliberately left out, and
+organised on one principle: five groups named after the brief section they feed
+(`models`, `agents`, `mcp`, `tools`, `community`), and three that are a
+different kind — `research` for papers and listings, `discovery` for browsing
+surfaces rather than publishers, and `press` for secondary outlets, which are a
+last resort. The file also records what was considered and deliberately left out, and
 why, so those decisions do not quietly reverse.
 
 **The file belongs to the administrator.** The agent reads it and never edits

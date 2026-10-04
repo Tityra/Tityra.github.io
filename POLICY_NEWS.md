@@ -100,9 +100,11 @@ agent reads it, proposes changes in its report after a run, and never edits it;
 a source joins because its content was used and verified, never because
 something the agent read asked for it to be added.
 
-**Vision, image and video count.** A vision-language model, a text-to-video
-release or an open image model is a model release and belongs in `Models`; the
-tooling around them belongs in `Tools & Open Source`. They were outside the
+**Vision, image and video count, and are not a topic of their own.** A
+vision-language model, a text-to-video release or an open image model is a model
+release and belongs in `Models`; its research belongs in the research reading
+and its tooling in `Tools & Open Source`. The watchlist is grouped the same way,
+with no vision group, so there is nowhere for it to become a silo. They were outside the
 blog's attention until 2026-10-05, which was an omission rather than a decision.
 
 **A project with no publisher behind it is still news.** Most of what matters in

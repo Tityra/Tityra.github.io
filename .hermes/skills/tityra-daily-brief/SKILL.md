@@ -71,9 +71,12 @@ repository — read that file, do not work from memory of it. Each entry carries
 - `daily` — read on every run.
 - `quiet` — read when the daily set has not produced enough, or about weekly.
 
-Entries are grouped by what they feed: `models`, `agents`, `mcp`, `tools`,
-`research`, `community`, and `coverage` for secondary outlets, which are a last
-resort and must be attributed in the text. These are pages, not feeds; read them
+Five groups are named after the section of the brief they feed — `models`,
+`agents`, `mcp`, `tools`, `community`. Three are a different kind, inputs that
+can feed any section: `research` (papers and listings), `discovery` (browsing
+surfaces rather than publishers — read them for something to follow, then go to
+the project itself) and `press` (secondary outlets, a last resort, always
+attributed in the text). These are pages, not feeds; read them
 and follow what looks significant through to the thing itself.
 
 **`watchlist.yml` belongs to the administrator and you do not edit it.** If you
@@ -95,9 +98,12 @@ by hand:**
    the brief, open it and confirm it was published in the last 24 hours. An
    undated item is not a dated item — leave it out or say the date is unclear.
    This is the one guarantee the old feed collector gave you and this does not.
-2. **Reddit throttles bursts.** Requesting several subreddits back to back gets
-   you `429`. Space them out, and if one still refuses, name it in Coverage
-   rather than letting its silence read as a quiet day.
+2. **A `403` or `429` is usually throttling, not a dead source.** Reddit
+   answers `429` to several subreddits requested back to back, and openai.com
+   answers `403` to rapid repeated requests; both recover after a pause. Space
+   requests out, **retry once after a wait before concluding anything**, and
+   only then name it on the Coverage line — a source wrongly written off stays
+   written off.
 3. **X is not reachable** without a credential this job does not have. Do not
    cite it from memory. If a story is only on X, it is not yet a story you can
    publish; wait for the primary source.
@@ -120,7 +126,7 @@ query is not coverage.
 
 | area | what counts |
 | --- | --- |
-| **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Z.ai, NVIDIA, …). **Vision-language, image and video models belong here too** — a VLM release is a model release, and the `vision` group of the watchlist feeds this section. |
+| **Models** | new model releases, version updates, benchmarks, pricing, deprecations and policy changes (OpenAI, Anthropic, Google, Meta, Mistral, xAI, Qwen, DeepSeek, Z.ai, NVIDIA, …). **Vision-language, image and video models belong here too** — a VLM release is a model release, not a separate topic, which is why the watchlist has no vision group: those sources sit in `models`, `research` and `tools` with everything else. |
 | **Agentic AI & Agent Skills** | agent frameworks and products, Agent Skills, notable adoption |
 | **MCP & Plug-in** | Model Context Protocol releases, spec changes, SDKs, significant integrations |
 | **Tools & Open Source** | AI services and products, notable open-source releases, and developer tools worth knowing about — the practical layer between a model and the work. Includes the graphics and video tooling (ComfyUI and the like), and small projects found through the `discovery` group that no publisher has covered. |

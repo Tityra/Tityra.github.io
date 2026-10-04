@@ -12,13 +12,31 @@
 # cadence: daily  — read on every run
 #          quiet  — read when the daily set has not produced enough, or weekly
 #
+# HOW THIS FILE IS ORGANISED
+#
+# Five groups are named after the section of the brief they feed:
+#   models · agents · mcp · tools · community
+# Three are a different kind — inputs that can feed any section:
+#   research   papers and listings
+#   discovery  browsing surfaces, not publishers: read them for something to
+#              follow, then go to the project itself
+#   press      secondary outlets, a last resort, always attributed in the text
+#
+# Nothing else is a group. Vision-language, image and video in particular are
+# not: a VLM or a video model is a model release, its research is research and
+# its tooling is tooling, so those sources sit in the groups above with
+# everything else and have nowhere to become a silo.
+#
 # Verified reachable 2026-10-05.
 
 models:
   - name: OpenAI
     url: https://openai.com/news/
     cadence: daily
-    why: Frontier model and product launches, pricing and deprecations.
+    why: >
+      Frontier model and product launches, pricing and deprecations. Answers 403
+      to rapid repeated requests and recovers after a pause — a 403 here is
+      throttling, not a dead page.
   - name: Anthropic
     url: https://www.anthropic.com/news
     cadence: daily
@@ -66,6 +84,23 @@ models:
     cadence: quiet
     why: Azure and Copilot, where it is not already covered by OpenAI.
 
+  - name: Black Forest Labs
+    url: https://bfl.ai/announcements
+    cadence: quiet
+    why: FLUX. The most consequential open image models.
+  - name: Stability AI
+    url: https://stability.ai/news
+    cadence: quiet
+    why: Open image and video weights.
+  - name: Runway
+    url: https://runwayml.com/research
+    cadence: quiet
+    why: Video generation research from the people shipping it commercially.
+  - name: Luma AI
+    url: https://lumalabs.ai/news
+    cadence: quiet
+    why: Video and 3D generation.
+
 agents:
   - name: Anthropic Engineering
     url: https://www.anthropic.com/engineering
@@ -103,18 +138,6 @@ tools:
     url: https://huggingface.co/blog
     cadence: daily
     why: Where open-weight releases are explained by the people who made them.
-  - name: Hugging Face papers
-    url: https://huggingface.co/papers
-    cadence: daily
-    why: The papers the field is actually reading, which arXiv listings do not show.
-  - name: Hugging Face trending models
-    url: https://huggingface.co/models?sort=trending
-    cadence: daily
-    why: An open-weight release shows up here before it is written about.
-  - name: GitHub Trending
-    url: https://github.com/trending
-    cadence: daily
-    why: Tooling becoming news in its own right, not only when a vendor ships it.
   - name: PyTorch
     url: https://pytorch.org/blog/
     cadence: daily
@@ -132,39 +155,16 @@ tools:
     cadence: quiet
     why: What local running looks like for people who are not building it.
 
-# Vision-language, image and video. Added 2026-10-05 at the administrator's
-# request; until now the blog had no way to see this half of the field at all.
-vision:
-  - name: arXiv cs.CV
-    url: https://arxiv.org/list/cs.CV/recent
-    cadence: daily
-    why: The obvious hole — cs.AI, cs.CL and cs.LG were listed and computer vision was not.
-  - name: Hugging Face trending Spaces
-    url: https://huggingface.co/spaces?sort=trending
-    cadence: daily
-    why: Where an image or video model becomes something you can try, often before it is written about.
-  - name: Black Forest Labs
-    url: https://bfl.ai/announcements
-    cadence: quiet
-    why: FLUX. The most consequential open image models.
-  - name: Stability AI
-    url: https://stability.ai/news
-    cadence: quiet
-    why: Open image and video weights.
-  - name: Runway
-    url: https://runwayml.com/research
-    cadence: quiet
-    why: Video generation research from the people shipping it commercially.
-  - name: Luma AI
-    url: https://lumalabs.ai/news
-    cadence: quiet
-    why: Video and 3D generation.
   - name: ComfyUI
     url: https://blog.comfy.org/
     cadence: quiet
     why: The tooling layer the image and video community actually runs.
 
 research:
+  - name: Hugging Face papers
+    url: https://huggingface.co/papers
+    cadence: daily
+    why: The papers the field is actually reading, which arXiv listings do not show.
   - name: arXiv cs.AI
     url: https://arxiv.org/list/cs.AI/recent
     cadence: daily
@@ -177,6 +177,10 @@ research:
     url: https://arxiv.org/list/cs.LG/recent
     cadence: daily
     why: Learning methods.
+  - name: arXiv cs.CV
+    url: https://arxiv.org/list/cs.CV/recent
+    cadence: daily
+    why: The obvious hole — cs.AI, cs.CL and cs.LG were listed and computer vision was not.
 
 community:
   # Reddit answers 429 to burst requests. Space them, and use the .rss form:
@@ -233,6 +237,18 @@ community:
 # then go to the project itself. Added after the administrator found
 # image-blaster and LongCat-Video, neither of which any publisher had covered.
 discovery:
+  - name: GitHub Trending
+    url: https://github.com/trending
+    cadence: daily
+    why: Tooling becoming news in its own right, not only when a vendor ships it.
+  - name: Hugging Face trending models
+    url: https://huggingface.co/models?sort=trending
+    cadence: daily
+    why: An open-weight release shows up here before it is written about.
+  - name: Hugging Face trending Spaces
+    url: https://huggingface.co/spaces?sort=trending
+    cadence: daily
+    why: Where an image or video model becomes something you can try, often before it is written about.
   - name: Show HN
     url: https://news.ycombinator.com/show
     cadence: daily
@@ -256,7 +272,7 @@ discovery:
 
 # Secondary. Use only for a story whose primary source does not exist or does
 # not say the thing, and attribute the outlet in the text.
-coverage:
+press:
   - name: MIT Technology Review
     url: https://www.technologyreview.com/topic/artificial-intelligence/
     cadence: quiet

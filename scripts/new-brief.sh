@@ -91,8 +91,8 @@ fi
 
 # The "nothing new" phrase is content, and lives in _config.yml so the English
 # guidelines can name it rather than embed it.
-EMPTY=$(sed -n 's/^  empty_section: *"\(.*\)"$/\1/p' _config.yml | head -1)
-EMPTY="${EMPTY:-Nothing new}"
+CHECKED=$(sed -n 's/^  checked_empty: *"\(.*\)"$/\1/p' _config.yml | head -1)
+CHECKED="${CHECKED:-Checked and empty today}"
 
 KIND="Daily brief"
 if [ -n "$ORDINAL" ]; then
@@ -123,23 +123,27 @@ sources: []
 
 ## Models
 
-${EMPTY}
+TODO
 
 ## Agentic AI & Agent Skills
 
-${EMPTY}
+TODO
 
 ## MCP & Plug-in
 
-${EMPTY}
+TODO
 
 ## Tools & Open Source
 
-${EMPTY}
+TODO
 
 ## Community
 
-${EMPTY}
+TODO
+
+## Coverage
+
+- ${CHECKED}: TODO. Unreachable: TODO.
 TEMPLATE
 
 echo "$FILE"
@@ -147,5 +151,6 @@ echo
 echo "Fill it in, then check before committing:" >&2
 echo "  - every factual claim traces to an entry in 'sources'" >&2
 echo "  - every number in the text appears in a linked source" >&2
-echo "  - sections with nothing new say '${EMPTY}' and stop there" >&2
+echo "  - a section with nothing in it is DELETED, heading and all; name it" >&2
+echo "    on the Coverage line instead ('${CHECKED}: ...')" >&2
 echo "  - if nothing happened anywhere today, delete this file and publish nothing" >&2

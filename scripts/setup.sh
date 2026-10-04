@@ -86,15 +86,19 @@ fi
 
 # ------------------------------------------------------------ watchlist ----
 echo
-echo "Watchlist reachability (no credential is used for any of these)"
+echo "Watchlist reachability — watchlist.yml (no credential is used for any of these)"
 python3 - "$REPO" <<'PROBE'
-import re, sys, urllib.request, pathlib
-skill = pathlib.Path(sys.argv[1], ".hermes/skills/tityra-daily-brief/SKILL.md")
-urls = sorted(set(re.findall(r"\]\((https?://[^)\s]+)\)", skill.read_text(encoding="utf-8"))))
+import re, sys, time, urllib.request, pathlib
+watchlist = pathlib.Path(sys.argv[1], "watchlist.yml")
+urls = sorted(set(re.findall(r"^\s+url:\s*(\S+)", watchlist.read_text(encoding="utf-8"), re.M)))
 agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
          "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 bad = []
 for url in urls:
+    # Reddit 429s a burst, so this check used to report three false failures
+    # every run. A check that cries wolf is a check nobody reads.
+    if "reddit.com" in url:
+        time.sleep(4)
     try:
         request = urllib.request.Request(url, headers={"User-Agent": agent, "Accept": "text/html"})
         if urllib.request.urlopen(request, timeout=20).status != 200:

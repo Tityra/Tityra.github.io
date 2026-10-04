@@ -102,8 +102,11 @@ Fixed sections, in this order:
 - Everything in bullet form. One to two lines per item; itemise sub-points.
 - **Keep technical terms in the original** — Agentic AI, MCP, tool use, context
   window, fine-tuning. Do not translate or paraphrase them.
-- A section with nothing new says the site's `brief.empty_section` phrase
-  (set in `_config.yml`) and stops. Do not pad it.
+- A section with nothing in it is **deleted, heading and all**. Name it on the
+  `Coverage` line instead, using the site's `brief.checked_empty` phrase (set in
+  `_config.yml`): *Checked and empty today: MCP & Plug-in, Community.* A reader
+  can then tell "there was no MCP news" from "this blog did not look at MCP",
+  which is the only reason the section list is published at all.
 
 **One story, one home.** Each item lives in exactly one section; `TOP 3` is an
 index that may point at it. Discussion of an announcement goes in `Community`

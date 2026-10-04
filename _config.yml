@@ -21,7 +21,9 @@ kramdown:
 # it); these are content values, referred to by name from those guidelines.
 brief:
   post_language: English
-  empty_section: "Nothing new"
+  # An empty section is left out of the post; it is named on the Coverage line
+  # instead, so a reader can tell "no MCP news" from "did not look at MCP".
+  checked_empty: "Checked and empty today"
   no_news_report: "No new items today"
 
 defaults:

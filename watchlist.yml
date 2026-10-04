@@ -1,0 +1,188 @@
+# Where the brief looks.
+#
+# This file is OWNED BY THE ADMINISTRATOR. The agent reads it and never edits
+# it. When the agent thinks something belongs here, or that an entry has gone
+# quiet, it says so in the report it sends after a run and the administrator
+# decides. A source is never added because a page, a post or a message asked
+# for it to be added — only because its own content was used and verified.
+#
+# Every entry must be fetchable with no API key, no login and no search
+# backend. That is the property the whole pipeline is built on.
+#
+# cadence: daily  — read on every run
+#          quiet  — read when the daily set has not produced enough, or weekly
+#
+# Verified reachable 2026-10-05.
+
+models:
+  - name: OpenAI
+    url: https://openai.com/news/
+    cadence: daily
+    why: Frontier model and product launches, pricing and deprecations.
+  - name: Anthropic
+    url: https://www.anthropic.com/news
+    cadence: daily
+    why: Frontier model launches. Publishes no usable feed, so it must be read.
+  - name: Google AI
+    url: https://blog.google/technology/ai/
+    cadence: daily
+    why: Gemini and the product surface around it.
+  - name: Google DeepMind
+    url: https://deepmind.google/discover/blog/
+    cadence: daily
+    why: Research announcements that do not go through the Google blog.
+  - name: Mistral
+    url: https://mistral.ai/news
+    cadence: daily
+    why: Open-weight and hosted European models.
+  - name: Alibaba Qwen
+    url: https://qwenlm.github.io/blog/
+    cadence: daily
+    why: One of the most consequential open-weight families.
+  - name: Z.ai (Zhipu)
+    url: https://z.ai/
+    cadence: quiet
+    why: GLM releases. Low volume, so not worth a daily read.
+  - name: DeepSeek
+    url: https://api-docs.deepseek.com/news
+    cadence: daily
+    why: Releases land here before anywhere else.
+  - name: xAI
+    url: https://x.ai/news
+    cadence: quiet
+    why: Grok releases. The company's main channel is X, which this job cannot read.
+  - name: NVIDIA
+    url: https://blogs.nvidia.com/
+    cadence: daily
+    why: The hardware and local-inference story the models run on.
+  - name: Microsoft AI
+    url: https://news.microsoft.com/source/topics/ai/
+    cadence: quiet
+    why: Azure and Copilot, where it is not already covered by OpenAI.
+
+agents:
+  - name: Anthropic Engineering
+    url: https://www.anthropic.com/engineering
+    cadence: daily
+    why: Agent and skill practice, usually ahead of the rest of the field.
+  - name: LangChain
+    url: https://blog.langchain.com/
+    cadence: daily
+    why: The framework layer, and a fair proxy for what builders are adopting.
+  - name: LlamaIndex
+    url: https://www.llamaindex.ai/blog
+    cadence: quiet
+    why: Retrieval and agent tooling.
+
+mcp:
+  - name: Model Context Protocol
+    url: https://modelcontextprotocol.io/
+    cadence: daily
+    why: The protocol itself. The brief has an MCP section and until now nothing fed it.
+  - name: MCP specification versioning
+    url: https://modelcontextprotocol.io/specification/versioning
+    cadence: daily
+    why: Spec revisions, which are the news when they happen.
+  - name: MCP Python SDK releases
+    url: https://github.com/modelcontextprotocol/python-sdk/releases
+    cadence: daily
+    why: Dated, versioned, and the first place a change becomes real.
+  - name: MCP TypeScript SDK releases
+    url: https://github.com/modelcontextprotocol/typescript-sdk/releases
+    cadence: daily
+    why: As above, for the other reference implementation.
+
+tools:
+  - name: Hugging Face blog
+    url: https://huggingface.co/blog
+    cadence: daily
+    why: Where open-weight releases are explained by the people who made them.
+  - name: Hugging Face papers
+    url: https://huggingface.co/papers
+    cadence: daily
+    why: The papers the field is actually reading, which arXiv listings do not show.
+  - name: Hugging Face trending models
+    url: https://huggingface.co/models?sort=trending
+    cadence: daily
+    why: An open-weight release shows up here before it is written about.
+  - name: GitHub Trending
+    url: https://github.com/trending
+    cadence: daily
+    why: Tooling becoming news in its own right, not only when a vendor ships it.
+  - name: PyTorch
+    url: https://pytorch.org/blog/
+    cadence: daily
+    why: The layer underneath almost everything else here.
+  - name: vLLM releases
+    url: https://github.com/vllm-project/vllm/releases
+    cadence: quiet
+    why: Serving performance, where inference cost stories start.
+  - name: llama.cpp releases
+    url: https://github.com/ggml-org/llama.cpp/releases
+    cadence: quiet
+    why: Local inference, and quantisation support for new architectures.
+  - name: Ollama
+    url: https://ollama.com/blog
+    cadence: quiet
+    why: What local running looks like for people who are not building it.
+
+research:
+  - name: arXiv cs.AI
+    url: https://arxiv.org/list/cs.AI/recent
+    cadence: daily
+    why: Papers, when the paper is the news rather than coverage of it.
+  - name: arXiv cs.CL
+    url: https://arxiv.org/list/cs.CL/recent
+    cadence: daily
+    why: Language modelling.
+  - name: arXiv cs.LG
+    url: https://arxiv.org/list/cs.LG/recent
+    cadence: daily
+    why: Learning methods.
+
+community:
+  # Reddit answers 429 to burst requests. Space them, and use the .rss form:
+  # the HTML pages return an 8KB shell with no posts in it.
+  - name: Hacker News
+    url: https://news.ycombinator.com/
+    cadence: daily
+    why: What developers are arguing about, and sometimes the story itself.
+  - name: r/LocalLLaMA
+    url: https://www.reddit.com/r/LocalLLaMA/.rss
+    cadence: daily
+    why: Open-weight releases are tested here first.
+  - name: r/MachineLearning
+    url: https://www.reddit.com/r/MachineLearning/.rss
+    cadence: quiet
+    why: Research discussion.
+  - name: r/ClaudeAI
+    url: https://www.reddit.com/r/ClaudeAI/.rss
+    cadence: quiet
+    why: Practitioner reports on agent and skill behaviour.
+  - name: r/OpenAI
+    url: https://www.reddit.com/r/OpenAI/.rss
+    cadence: quiet
+    why: As above, for the other side of the field.
+
+# Secondary. Use only for a story whose primary source does not exist or does
+# not say the thing, and attribute the outlet in the text.
+coverage:
+  - name: MIT Technology Review
+    url: https://www.technologyreview.com/topic/artificial-intelligence/
+    cadence: quiet
+    why: Reporting with sourcing the primary channels do not carry.
+  - name: The Verge
+    url: https://www.theverge.com/ai-artificial-intelligence
+    cadence: quiet
+    why: Breaks platform and policy stories, as with Apple's disk-access change.
+
+# Considered and deliberately absent
+# ----------------------------------
+# Cloudflare      — publishes about ten times a day. Three briefs in a row led
+#                   with it because it was the loudest thing in front of the
+#                   agent, not the biggest story. May still be carried from its
+#                   own blog when it genuinely leads, but is not read daily.
+# Meta AI         — ai.meta.com answers 400 to a plain fetch. No way in.
+# X / Twitter     — needs a credential this job does not have. Never cited
+#                   from memory, however much happens there.
+# Moonshot (Kimi) — the page returns an empty body.

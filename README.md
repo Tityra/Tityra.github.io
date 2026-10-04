@@ -60,11 +60,13 @@ _layouts/             default + post
 assets/css/styles.css The design system
 POLICY_NEWS.md        Standing editorial policy
 USAGE.md              How to write and publish a brief
+scripts/setup.sh      Sets this project up on a machine; --check verifies one
 scripts/new-brief.sh  Creates a dated skeleton; refuses duplicates
-scripts/check-brief.sh  Gate before publishing; fails on bad links, TODOs, duplication
+scripts/check-brief.sh  Gate before publishing; fails on bad links, TODOs, future dates
 scripts/install-skill.sh  Installs the repo skill where the cron runner looks
 scripts/run-brief-now.sh  Publishes another brief today, on demand
 .hermes/skills/       Agent skill for the daily brief
+.hermes/job-prompt.txt  The scheduled job's prompt, in version control
 ```
 
 ## The daily brief
@@ -116,6 +118,32 @@ The copy under `~/.hermes/skills/` is installed *from* this repository by
 `scripts/install-skill.sh` and is not edited in place. The repository is the
 source of record; that copy exists only because the cron runner cannot see
 repo-local skills.
+
+## Setting it up on another machine
+
+```bash
+git clone <this repository> && cd Tityra
+./scripts/setup.sh
+```
+
+It checks the prerequisites, confirms this machine can authenticate to the git
+host (the job pushes by itself and cannot answer a password prompt), installs
+the skill where the cron runner looks, probes every watchlist page, and creates
+or updates the scheduled job. Re-running is safe: it updates the existing job
+rather than adding a second one. `./scripts/setup.sh --check` verifies an
+install and changes nothing.
+
+**No secret is kept in this repository, and the script will not put one there.**
+The research step needs no credential at all — that is the point of the design —
+so the only private value is the channel the brief is delivered to. The script
+asks for it at run time and hands it straight to Hermes, which stores its own
+configuration outside this repo; set `TITYRA_DELIVER` to answer without a
+prompt. The model provider credential belongs to Hermes too, and is never read
+or written by anything here.
+
+The job's prompt lives in `.hermes/job-prompt.txt` so it is reviewable in
+version control and reproducible on a new machine. `TITYRA_SCHEDULE`,
+`TITYRA_MODEL`, `TITYRA_PROVIDER` and `TITYRA_JOB_NAME` override the defaults.
 
 ## Where the brief's research comes from
 

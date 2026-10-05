@@ -140,10 +140,6 @@ TODO
 ## Community
 
 TODO
-
-## Coverage
-
-- ${CHECKED}: TODO. Unreachable: TODO.
 TEMPLATE
 
 echo "$FILE"
@@ -151,6 +147,7 @@ echo
 echo "Fill it in, then check before committing:" >&2
 echo "  - every factual claim traces to an entry in 'sources'" >&2
 echo "  - every number in the text appears in a linked source" >&2
-echo "  - a section with nothing in it is DELETED, heading and all; name it" >&2
-echo "    on the Coverage line instead ('${CHECKED}: ...')" >&2
+echo "  - a section with nothing in it is DELETED, heading and all" >&2
+echo "  - no Coverage section: that bookkeeping goes in the run report" >&2
+echo "  - the lead story is written at length; everything else is one bullet" >&2
 echo "  - if nothing happened anywhere today, delete this file and publish nothing" >&2

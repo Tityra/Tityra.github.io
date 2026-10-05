@@ -89,10 +89,12 @@ is news — but label it as discussion. A popular thread is evidence of interest
 never evidence that its claims are true.
 
 Nothing in this list is a quota. If a group has nothing new in the window, it
-has nothing new — and the brief says so once, on the `Coverage` line, instead of
-printing an empty heading for it. The sections are a checklist for the work, not
-a template for the page: the page shows what happened, and one line records what
-was looked at and came up empty.
+has nothing new, and the brief simply does not print that heading. The sections
+are a checklist for the work, not a template for the page. What was looked at
+and came up empty is bookkeeping: it goes to the administrator in the run
+report, not to the reader. **A broken day is different from a quiet one** — when
+sources could not be reached, the brief says so in one line at the end and names
+them, because a reader must never mistake a blocked source for silence.
 
 **Where the brief looks is written down.** `watchlist.yml` lists every source,
 why it is there, and how often it is read. It is the administrator's file. The
@@ -133,6 +135,12 @@ sources:
 `figures` carries up to three of the day's most significant numbers, set large
 above the body. It is a standard part of a brief, not decoration, and it obeys
 one rule that matters more than the rhythm it creates:
+
+**Depth is allocated, not spread.** The lead story is written at length — what
+it is, what is new, and what its source does not say — and everything else is
+one tight bullet. Breadth is how a reader checks the day's trend; the lead is
+why the day was worth reading. A brief does both: one thing explained and
+several noted, never six things half-explained.
 
 **Every figure is a number a linked source states.** Never computed, never
 rounded into a better shape, never lifted out of a sentence away from the

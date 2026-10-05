@@ -10,9 +10,13 @@ CONFIRM THE DATE of every item at its own page before using it. A newsroom page 
 
 Reddit throttles bursts -- space those requests out, and use the .rss form. X is not reachable without a credential this job does not have; never cite it from memory.
 
-A SECTION WITH NOTHING IN IT IS DELETED, HEADING AND ALL. Name it on the Coverage line instead ("Checked and empty today: ..."). Do not write an empty heading and do not pad one.
+A SECTION WITH NOTHING IN IT IS DELETED, HEADING AND ALL, and there is NO Coverage section in the post. The post carries what happened; which sections were empty is bookkeeping and goes in your report instead. The one exception: if sources could not be reached and the day's picture is genuinely incomplete, end the brief with a single italic line saying so and naming them.
 
-Breadth is not a quota: an empty day is a correct answer, a fabricated one is not. Name on the Coverage line anything you could not reach.
+DEPTH IS ALLOCATED, NOT SPREAD. The lead story -- the one TOP 3 names first -- is written at length: what it is, what is new in it, and what the source does not say. Everything else is one tight bullet. One thing explained and several noted, never six things half-explained. Breadth lets a reader check the day's trend; the lead is why the day was worth reading. Do both.
+
+A 403 or 429 is throttling, not a dead source: pause and retry once before concluding anything.
+
+Breadth is not a quota: an empty day is a correct answer, a fabricated one is not.
 
 Then publish:
 1. ./scripts/check-brief.sh on the file you wrote. It fails a future-dated post, so stamp the brief with the time you are writing it, never a later hour.

@@ -43,6 +43,6 @@ sources:
 - **llama.cpp parser fix:** [The October 5 b11393 pre-release](https://github.com/ggml-org/llama.cpp/releases/tag/b11393) clears a stale `current_tool` pointer after a pending tool call is reset. The release notes say a subsequent `TOOL_ID` after `TOOL_CLOSE` could otherwise cause a use-after-free and a second free of the ID buffer. The notes do not establish exploitability; this is a memory-safety fix in a pre-release.
 - **SCM / Screen Memories:** [An October 4 Show HN post](https://news.ycombinator.com/item?id=49952111) surfaced a [local-first macOS media-search project](https://github.com/allenv0/SCM). Its README describes vision search over photos and video scenes, separate OCR and Whisper dialogue search, and optional local chat over extracted evidence. These are the project's stated capabilities, not independent test results.
 
-## Coverage
-
-- Window: October 4, 06:00 to October 5, 06:00 Asia/Seoul. Checked and empty today: Models, MCP & Plug-in, Community. The Qwen watchlist URL points to a new blog; the DeepSeek news URL returned a missing-page notice. OpenAI and xAI were blocked, and r/LocalLLaMA was blocked or rate-limited on retry; coverage of those sources is incomplete. The configured extraction gateway was unavailable, so the watchlist was read directly in a browser.
+*Coverage was incomplete: OpenAI, xAI and r/LocalLLaMA could not be reached, and
+the DeepSeek and Qwen pages this blog was reading had moved. Fewer sources than
+usual stand behind this brief.*

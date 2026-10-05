@@ -54,17 +54,29 @@ models:
     cadence: daily
     why: Open-weight and hosted European models.
   - name: Alibaba Qwen
-    url: https://qwenlm.github.io/blog/
+    url: https://qwen.ai/blog
     cadence: daily
-    why: One of the most consequential open-weight families.
+    why: >
+      One of the most consequential open-weight families. The canonical home
+      since the move off GitHub Pages; a plain fetch returns an empty shell, so
+      it needs the browser path.
+  - name: Alibaba Qwen (old blog)
+    url: https://qwenlm.github.io/blog/
+    cadence: quiet
+    why: >
+      Still serves readable text during the migration and carries posts the new
+      site renders only in JavaScript. Drop this entry once it stops updating.
   - name: Z.ai (Zhipu)
     url: https://z.ai/
     cadence: quiet
     why: GLM releases. Low volume, so not worth a daily read.
   - name: DeepSeek
-    url: https://api-docs.deepseek.com/news
+    url: https://api-docs.deepseek.com/updates
     cadence: daily
-    why: Releases land here before anywhere else.
+    why: >
+      The dated change log, which is where releases actually land. The old /news
+      path now serves the "Your First API Call" page with a 200, so it looked
+      alive and carried nothing — found by the 2026-10-05 run.
   - name: xAI
     url: https://x.ai/news
     cadence: quiet

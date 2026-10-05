@@ -102,11 +102,12 @@ Fixed sections, in this order:
 - Everything in bullet form. One to two lines per item; itemise sub-points.
 - **Keep technical terms in the original** — Agentic AI, MCP, tool use, context
   window, fine-tuning. Do not translate or paraphrase them.
-- A section with nothing in it is **deleted, heading and all**. Name it on the
-  `Coverage` line instead, using the site's `brief.checked_empty` phrase (set in
-  `_config.yml`): *Checked and empty today: MCP & Plug-in, Community.* A reader
-  can then tell "there was no MCP news" from "this blog did not look at MCP",
-  which is the only reason the section list is published at all.
+- A section with nothing in it is **deleted, heading and all**, and there is no
+  `Coverage` section: the post carries what happened, not the bookkeeping of
+  what was looked at. That belongs in the run report to the administrator.
+- The exception is coverage that was genuinely broken. If sources could not be
+  reached and the day's picture is incomplete, end the brief with one italic
+  line saying so and naming them. Only on the days it is true.
 
 **One story, one home.** Each item lives in exactly one section; `TOP 3` is an
 index that may point at it. Discussion of an announcement goes in `Community`

@@ -102,12 +102,13 @@ Fixed sections, in this order:
 - Everything in bullet form. One to two lines per item; itemise sub-points.
 - **Keep technical terms in the original** — Agentic AI, MCP, tool use, context
   window, fine-tuning. Do not translate or paraphrase them.
-- A section with nothing in it is **deleted, heading and all**, and there is no
-  `Coverage` section: the post carries what happened, not the bookkeeping of
-  what was looked at. That belongs in the run report to the administrator.
-- The exception is coverage that was genuinely broken. If sources could not be
-  reached and the day's picture is incomplete, end the brief with one italic
-  line saying so and naming them. Only on the days it is true.
+- A section with nothing in it is **deleted, heading and all**, and the post
+  carries **no coverage note at all** — no `Coverage` section and no closing
+  disclaimer. What was checked, what was empty and what could not be reached are
+  operational and belong in the run report to the administrator.
+- **Never name a source that failed, or any source the brief did not use.** The
+  watchlist is internal; a reader should not be able to reconstruct it from the
+  posts.
 
 **One story, one home.** Each item lives in exactly one section; `TOP 3` is an
 index that may point at it. Discussion of an announcement goes in `Community`

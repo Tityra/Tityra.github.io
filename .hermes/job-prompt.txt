@@ -10,7 +10,9 @@ CONFIRM THE DATE of every item at its own page before using it. A newsroom page 
 
 Reddit throttles bursts -- space those requests out, and use the .rss form. X is not reachable without a credential this job does not have; never cite it from memory.
 
-A SECTION WITH NOTHING IN IT IS DELETED, HEADING AND ALL, and there is NO Coverage section in the post. The post carries what happened; which sections were empty is bookkeeping and goes in your report instead. The one exception: if sources could not be reached and the day's picture is genuinely incomplete, end the brief with a single italic line saying so and naming them.
+A SECTION WITH NOTHING IN IT IS DELETED, HEADING AND ALL, and the post carries NO COVERAGE NOTE OF ANY KIND -- no Coverage section, no closing disclaimer. The post carries what happened. What was checked, what was empty and what could not be reached go in your report to the administrator instead.
+
+NEVER NAME A SOURCE THE BRIEF DID NOT USE, including ones that failed. watchlist.yml is internal and a reader must not be able to reconstruct it from the posts. If too little could be reached for the brief to stand up, publish less or publish nothing -- a thin brief with a disclaimer attached is not the answer.
 
 DEPTH IS ALLOCATED, NOT SPREAD. The lead story -- the one TOP 3 names first -- is written at length: what it is, what is new in it, and what the source does not say. Everything else is one tight bullet. One thing explained and several noted, never six things half-explained. Breadth lets a reader check the day's trend; the lead is why the day was worth reading. Do both.
 

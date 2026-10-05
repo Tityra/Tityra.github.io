@@ -92,9 +92,12 @@ Nothing in this list is a quota. If a group has nothing new in the window, it
 has nothing new, and the brief simply does not print that heading. The sections
 are a checklist for the work, not a template for the page. What was looked at
 and came up empty is bookkeeping: it goes to the administrator in the run
-report, not to the reader. **A broken day is different from a quiet one** — when
-sources could not be reached, the brief says so in one line at the end and names
-them, because a reader must never mistake a blocked source for silence.
+report, not to the reader. **A broken day is different from a quiet one** — but
+the difference is settled before publishing, not disclosed afterwards. If too
+little could be reached for the brief to stand up, publish less or publish
+nothing; do not publish a thin brief with a disclaimer attached. **Where this
+blog looks is not published.** The watchlist is internal, and naming the sources
+that failed names the sources.
 
 **Where the brief looks is written down.** `watchlist.yml` lists every source,
 why it is there, and how often it is read. It is the administrator's file. The

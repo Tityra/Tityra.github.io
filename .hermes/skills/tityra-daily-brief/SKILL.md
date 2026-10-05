@@ -237,16 +237,16 @@ Rules, all of which restate `POLICY_NEWS.md`:
 - **No opinion, speculation or forecasting.** State what the primary source
   states. This is stricter than an ordinary news post and it is deliberate.
 - **A section with nothing in it is left out of the post entirely.** No
-  heading, no padding, and **no `Coverage` section either** — the post carries
-  what happened, not the bookkeeping of what was looked at. Which sections were
-  empty goes in the report to the administrator, on the `CHECKED` line.
-- **The one exception is coverage that was actually broken.** If sources were
-  unreachable to the point that the day's picture is incomplete, the brief ends
-  with a single italic line saying so and naming them — *Coverage was
-  incomplete: OpenAI and xAI could not be reached.* One line, at the end, only
-  on the days it is true. A reader must never mistake a blocked source for a
-  quiet day; a reader also does not need to be told, every morning, that MCP was
-  checked.
+  heading, no padding, and **no coverage note of any kind** — not a `Coverage`
+  section, not a closing line, nothing. The post carries what happened. What was
+  checked, what was empty and what could not be reached are all operational, and
+  they go to the administrator in the report instead.
+- **The post never reveals where this blog looks.** `watchlist.yml` is internal.
+  Naming the sources that failed names the sources, and a reader learning the
+  reading list from the brief is a disclosure, not a courtesy. If coverage was
+  broken, say so in the report and let the administrator decide — and if the day
+  is too thin to stand up, the right answer was never a disclaimer, it was to
+  publish less or publish nothing.
 - **Depth is allocated, not spread.** The lead story — the one `TOP 3` names
   first — is written at length: what it is, what is new in it, and what the
   source does not say. Everything else is one tight bullet. A brief is one thing

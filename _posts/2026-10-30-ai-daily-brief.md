@@ -23,7 +23,7 @@ sources:
   - title: How we detect frontier model misalignment
     url: https://openai.com/index/how-we-detect-frontier-model-misalignment/
     outlet: OpenAI
-  - title: Managed Deep Agents v0.10: Browser use and asynchronous subagents
+  - title: "Managed Deep Agents v0.10: Browser use and asynchronous subagents"
     url: https://blog.langchain.com/managed-deep-agents-browser-use-and-asynchronous-subagents/
     outlet: LangChain
   - title: Granite Switch 4.1.1 — Update models like you update software

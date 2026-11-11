@@ -1,0 +1,17 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+<section class="lede search-lede">
+  <h1>Search</h1>
+  <p>Find a story across every brief.</p>
+</section>
+<section class="search" aria-label="Search briefs">
+  <label class="eyebrow" for="site-search">Search every brief</label>
+  <input id="site-search" type="search" autocomplete="off" placeholder="e.g. document parsing" data-index-url="{{ '/search-index.json' | relative_url }}" />
+  <p id="search-status" role="status" aria-live="polite">Enter a word or phrase to search every brief.</p>
+  <ul id="search-results" class="briefs"></ul>
+  <noscript><p>Search needs JavaScript. You can still <a href="{{ '/archive/' | relative_url }}">browse every brief in the archive</a>.</p></noscript>
+</section>
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>

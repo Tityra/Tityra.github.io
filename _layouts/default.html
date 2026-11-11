@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..500&family=Hanken+Grotesk:wght@400..700&family=DM+Mono:wght@400;500&family=Noto+Serif+KR:wght@500&family=Noto+Sans+KR:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=9" />
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v=10" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/tityra-32.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="48x48" href="{{ '/assets/img/tityra-48.png' | relative_url }}" />
     <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/img/tityra-96.png' | relative_url }}" />
@@ -41,6 +41,7 @@
         <nav class="masthead__nav">
           <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Briefs</a>
           <a href="{{ '/archive/' | relative_url }}"{% if page.url contains '/archive' %} aria-current="page"{% endif %}>Archive</a>
+          <a href="{{ '/search/' | relative_url }}"{% if page.url contains '/search/' %} aria-current="page"{% endif %}>Search</a>
           <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>About</a>
         </nav>
       </header>

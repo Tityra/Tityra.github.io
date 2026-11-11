@@ -109,6 +109,13 @@ body {
   border-bottom-color: var(--ink);
 }
 
+.masthead__nav a:focus-visible,
+.search input:focus-visible,
+.search-result a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
 /* The tagline sits under the rule like a dateline. */
 .dateline {
   font-family: var(--font-mono);
@@ -307,6 +314,41 @@ body {
   color: inherit;
 }
 
+/* --------------------------------------------------------------- search */
+.search {
+  padding-top: 28px;
+}
+
+.search input {
+  display: block;
+  width: min(100%, 680px);
+  min-height: 48px;
+  margin: 10px 0 14px;
+  padding: 10px 14px;
+  border: var(--rule);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--deep);
+  font: inherit;
+}
+
+.search input::placeholder {
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+#search-status {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: var(--rule);
+}
+
+.search-result .brief__summary {
+  overflow-wrap: anywhere;
+}
+
 /* ------------------------------------------------------------------ footer */
 .foot {
   border-top: var(--rule);
@@ -470,6 +512,12 @@ body {
 .js-reveal .brief.is-in,
 .js-reveal .month.is-in {
   animation: rise 0.5s var(--ease) both;
+}
+
+/* Search rows are inserted after the observer's initial scan. Keep them visible. */
+.js-reveal #search-results .brief {
+  opacity: 1;
+  animation: none;
 }
 
 /* Interaction: the deck's ease on everything that responds to a pointer. */
